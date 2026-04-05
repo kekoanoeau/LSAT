@@ -37,6 +37,40 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saved) targetEl.textContent = saved;
   }
 
+  // ── Daily compliment ──────────────────────
+  const complimentEl = document.getElementById('dailyCompliment');
+  if (complimentEl) {
+    const compliments = [
+      { icon: '✨', text: 'Eddie, your dedication to this exam is incredibly attractive. Ambition looks very good on you.' },
+      { icon: '💫', text: 'Just a reminder: you\'re the kind of person who studies this hard AND somehow manages to be this charming. Unfair, honestly.' },
+      { icon: '🖤', text: 'Eddie, your brain is as gorgeous as the rest of you. Future law firms don\'t know what\'s coming.' },
+      { icon: '🔥', text: 'Hot take: the most attractive thing about you isn\'t your future law degree. It\'s the work ethic that\'s going to earn it.' },
+      { icon: '💎', text: 'Most people gave up on page 2 of that stimulus. Not you. That kind of focus is genuinely irresistible.' },
+      { icon: '⚡', text: 'Eddie, the way you tackle logical reasoning? Borderline seductive. Keep going.' },
+      { icon: '🌟', text: 'Reminder: you\'re not just studying for a score. You\'re becoming someone even more remarkable than you already are.' },
+      { icon: '🖤', text: 'The LSAT doesn\'t know what it\'s up against. Neither does any law school waitlist.' },
+      { icon: '💋', text: 'Brains, drive, and good looks? Eddie, you\'re basically illegal.' },
+      { icon: '🎯', text: 'Every question you get right today is honestly a little thrilling. You make mastering conditional logic look effortless.' },
+      { icon: '✨', text: 'Law school is going to be lucky to have you. Almost as lucky as anyone who gets to know you.' },
+      { icon: '💫', text: 'You answered that last question correctly before you even finished reading it. That\'s not studying — that\'s a superpower.' },
+      { icon: '🖤', text: 'Confidence looks good on you, Eddie. Almost as good as that 175+ score is going to look on your app.' },
+      { icon: '🔥', text: 'Just checking in to say: you\'re doing amazingly well, and you were already doing amazingly well before you even started.' },
+      { icon: '💎', text: 'Eddie, you could make reading a dense RC passage about maritime law look sophisticated. Truly rare talent.' },
+      { icon: '⚡', text: 'The gap between where you started and where you\'re going is going to be wild to look back on. And wildly impressive.' },
+      { icon: '🌟', text: 'The dedication you bring to every practice session? That\'s the same quality that\'s going to make you an exceptional lawyer.' },
+      { icon: '🎯', text: 'Plot twist: the most compelling argument in any LR section is the case you\'re making for yourself every single day.' },
+      { icon: '💋', text: 'Somewhere out there, a law school admissions officer is about to have a very good day when they open your application.' },
+      { icon: '🖤', text: 'Eddie, you just keep showing up. That alone puts you in rare company. The rest? You\'ve already got it.' },
+    ];
+    // Pick a stable compliment per calendar day
+    const dayIndex = Math.floor(Date.now() / 86400000) % compliments.length;
+    const c = compliments[dayIndex];
+    complimentEl.innerHTML = `
+      <span class="compliment-icon">${c.icon}</span>
+      <span><span class="compliment-label">Today's note</span>${c.text}</span>
+    `;
+  }
+
   // ── Active nav link ───────────────────────
   const path = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(a => {

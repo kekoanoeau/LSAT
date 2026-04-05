@@ -187,7 +187,7 @@ private struct SelectionScreen: View {
                 Button(action: { session.startSession() }) {
                     Label("Start Practice", systemImage: "play.fill")
                         .font(.headline).frame(maxWidth: .infinity)
-                        .padding().background(Color.indigo, in: RoundedRectangle(cornerRadius: 14))
+                        .padding().background(Color.black, in: RoundedRectangle(cornerRadius: 14))
                         .foregroundStyle(.white)
                 }
                 .padding(.horizontal)
@@ -216,7 +216,7 @@ private struct ActiveScreen: View {
                     }
                 }
                 ProgressView(value: Double(session.currentIndex + 1), total: Double(session.questions.count))
-                    .tint(.indigo)
+                    .tint(.primary)
             }
             .padding()
 
@@ -245,7 +245,7 @@ private struct ActiveScreen: View {
                                     Label(session.isLastQuestion ? "Finish" : "Next", systemImage: session.isLastQuestion ? "flag.checkered" : "chevron.right")
                                         .frame(maxWidth: .infinity)
                                 }
-                                .buttonStyle(.borderedProminent).tint(.indigo)
+                                .buttonStyle(.borderedProminent).tint(.primary)
                             } else {
                                 Button(action: { session.skipQuestion() }) {
                                     Text("Skip")
@@ -256,7 +256,7 @@ private struct ActiveScreen: View {
                                     Text("Submit")
                                         .frame(maxWidth: .infinity)
                                 }
-                                .buttonStyle(.borderedProminent).tint(.indigo)
+                                .buttonStyle(.borderedProminent).tint(.primary)
                                 .disabled(session.answers[q.id] == nil)
                             }
                         }
@@ -463,7 +463,7 @@ private struct ResultsScreen: View {
                     Button(action: { save(); session.reset() }) {
                         Label("Practice Again", systemImage: "arrow.clockwise")
                             .frame(maxWidth: .infinity).padding()
-                            .background(Color.indigo, in: RoundedRectangle(cornerRadius: 14))
+                            .background(Color.black, in: RoundedRectangle(cornerRadius: 14))
                             .foregroundStyle(.white).font(.headline)
                     }
                 }

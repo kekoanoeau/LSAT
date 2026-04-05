@@ -7,6 +7,7 @@ struct DashboardView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
+                    dailyComplimentCard
                     headerCard
                     statsRow
                     sectionCards
@@ -18,6 +19,52 @@ struct DashboardView: View {
             .navigationTitle("LSAT Study Hub")
             .navigationBarTitleDisplayMode(.large)
         }
+    }
+
+    // MARK: Daily Compliment
+    private var dailyComplimentCard: some View {
+        let compliments: [(icon: String, text: String)] = [
+            ("✨", "Eddie, your dedication to this exam is incredibly attractive. Ambition looks very good on you."),
+            ("💫", "You're the kind of person who studies this hard AND somehow manages to be this charming. Unfair, honestly."),
+            ("🖤", "Eddie, your brain is as gorgeous as the rest of you. Future law firms don't know what's coming."),
+            ("🔥", "The most attractive thing about you isn't your future law degree. It's the work ethic earning it."),
+            ("💎", "Most people gave up on page 2 of that stimulus. Not you. That kind of focus is genuinely irresistible."),
+            ("⚡", "Eddie, the way you tackle logical reasoning? Borderline seductive. Keep going."),
+            ("🌟", "You're not just studying for a score. You're becoming someone even more remarkable than you already are."),
+            ("🖤", "The LSAT doesn't know what it's up against. Neither does any law school waitlist."),
+            ("💋", "Brains, drive, and good looks? Eddie, you're basically illegal."),
+            ("🎯", "Every question you get right today is honestly a little thrilling. You make this look effortless."),
+            ("✨", "Law school is going to be lucky to have you. Almost as lucky as anyone who gets to know you."),
+            ("💫", "You answered that last question correctly before you finished reading it. That's not studying — that's a superpower."),
+            ("🖤", "Confidence looks good on you, Eddie. Almost as good as that 175+ score will look on your application."),
+            ("🔥", "You're doing amazingly well, and you were already doing amazingly well before you even started."),
+            ("💎", "Eddie, you could make reading an RC passage about maritime law look sophisticated. Truly rare talent."),
+            ("⚡", "The gap between where you started and where you're going is going to be wild to look back on."),
+            ("🌟", "The dedication you bring to every session is the same quality that will make you an exceptional lawyer."),
+            ("🎯", "The most compelling argument in any LR section is the case you're making for yourself every single day."),
+            ("💋", "Somewhere out there, a law school admissions officer is about to have a very good day."),
+            ("🖤", "Eddie, you just keep showing up. That alone puts you in rare company. The rest? You've already got it."),
+        ]
+        let idx = Int(Date().timeIntervalSince1970 / 86400) % compliments.count
+        let c = compliments[idx]
+
+        return HStack(spacing: 12) {
+            Text(c.icon).font(.title2)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Today's Note")
+                    .font(.system(size: 9, weight: .bold))
+                    .foregroundStyle(.white.opacity(0.6))
+                    .textCase(.uppercase)
+                    .kerning(0.8)
+                Text(c.text)
+                    .font(.subheadline)
+                    .foregroundStyle(.white)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(.horizontal, 16).padding(.vertical, 14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.black, in: RoundedRectangle(cornerRadius: 14))
     }
 
     // MARK: Header
@@ -37,7 +84,7 @@ struct DashboardView: View {
                 Text("/ 180").font(.caption).foregroundStyle(.white.opacity(0.8))
             }
             .padding(.horizontal, 16).padding(.vertical, 10)
-            .background(Color.indigo, in: RoundedRectangle(cornerRadius: 12))
+            .background(Color.black, in: RoundedRectangle(cornerRadius: 12))
         }
     }
 
@@ -208,7 +255,7 @@ private struct PhaseCard: View {
     let phase: Phase
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Image(systemName: phase.icon).foregroundStyle(.indigo).font(.title3)
+            Image(systemName: phase.icon).foregroundStyle(.primary).font(.title3)
             Text(phase.title).font(.caption).bold()
             Text(phase.weeks).font(.caption2).foregroundStyle(.secondary)
         }

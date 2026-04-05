@@ -13,7 +13,7 @@ struct ProgressDashboardView: View {
                 // Overview stats
                 Section {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                        ProgressStatCard(label: "LR Accuracy", value: progress.accuracyString(for: .lr), color: .indigo)
+                        ProgressStatCard(label: "LR Accuracy", value: progress.accuracyString(for: .lr), color: .primary)
                         ProgressStatCard(label: "RC Accuracy", value: progress.accuracyString(for: .rc), color: .orange)
                         ProgressStatCard(label: "Questions Done", value: "\(progress.totalAttempted)", color: .purple)
                     }
@@ -41,7 +41,7 @@ struct ProgressDashboardView: View {
                             Text("\(Int(targetInput))").font(.title3).bold().foregroundStyle(.indigo)
                         }
                         Slider(value: $targetInput, in: 120...180, step: 1)
-                            .tint(.indigo)
+                            .tint(.primary)
                         Text(Int(targetInput).lsatPercentileDescription)
                             .font(.caption).foregroundStyle(.secondary)
                         Button("Save Target") {
@@ -49,7 +49,7 @@ struct ProgressDashboardView: View {
                             withAnimation { showTargetSaved = true }
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { showTargetSaved = false }
                         }
-                        .buttonStyle(.borderedProminent).tint(.indigo)
+                        .buttonStyle(.borderedProminent).tint(.primary)
                         if showTargetSaved {
                             Label("Saved!", systemImage: "checkmark.circle.fill")
                                 .font(.caption).foregroundStyle(.green)

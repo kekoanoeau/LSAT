@@ -15,6 +15,6 @@ struct ContentView: View {
             ProgressDashboardView()
                 .tabItem { Label("Progress", systemImage: "chart.bar.fill") }
         }
-        .tint(.indigo)
+        .tint(.primary)
     }
 }
