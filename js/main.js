@@ -23,12 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const lrEl = document.getElementById('lrAccuracy');
-  const lgEl = document.getElementById('lgAccuracy');
   const rcEl = document.getElementById('rcAccuracy');
   const totEl = document.getElementById('totalQuestions');
 
   if (lrEl) lrEl.textContent = pctStr('lr');
-  if (lgEl) lgEl.textContent = pctStr('lg');
   if (rcEl) rcEl.textContent = pctStr('rc');
   if (totEl) totEl.textContent = total;
 

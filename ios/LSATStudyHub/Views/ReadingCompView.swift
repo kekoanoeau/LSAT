@@ -4,6 +4,16 @@ struct ReadingCompView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                // Format notice
+                HStack(spacing: 10) {
+                    Image(systemName: "info.circle.fill").foregroundStyle(.blue)
+                    Text("Aug 2024+ Format: RC is now ~35% of your score (1 scored section, ~27 questions). Logic Games was removed — RC is the second most important section after LR.")
+                        .font(.caption)
+                }
+                .padding(10)
+                .background(Color.blue.opacity(0.08), in: RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal)
+
                 rcSection(title: "The RC Method: Active Passage Mapping") {
                     VStack(alignment: .leading, spacing: 8) {
                         StepRow(n: 1, text: "Read for structure, not details. Understand the author's argument, not every fact.")

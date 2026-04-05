@@ -12,9 +12,8 @@ struct ProgressDashboardView: View {
             List {
                 // Overview stats
                 Section {
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                         ProgressStatCard(label: "LR Accuracy", value: progress.accuracyString(for: .lr), color: .indigo)
-                        ProgressStatCard(label: "LG Accuracy", value: progress.accuracyString(for: .lg), color: .green)
                         ProgressStatCard(label: "RC Accuracy", value: progress.accuracyString(for: .rc), color: .orange)
                         ProgressStatCard(label: "Questions Done", value: "\(progress.totalAttempted)", color: .purple)
                     }
@@ -99,7 +98,8 @@ struct ProgressDashboardView: View {
 private struct AccuracyBarsView: View {
     let progress: StudyProgress
 
-    private let sections: [Question.SectionType] = [.lr, .lg, .rc]
+    // Aug 2024+: LG removed from LSAT
+    private let sections: [Question.SectionType] = [.lr, .rc]
 
     var body: some View {
         VStack(spacing: 10) {

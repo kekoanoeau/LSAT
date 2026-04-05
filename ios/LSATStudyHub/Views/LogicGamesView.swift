@@ -4,6 +4,22 @@ struct LogicGamesView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                // Removal Banner
+                HStack(alignment: .top, spacing: 12) {
+                    Image(systemName: "xmark.octagon.fill")
+                        .foregroundStyle(.red).font(.title3)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Removed from LSAT — August 2024")
+                            .font(.subheadline).bold().foregroundStyle(.red)
+                        Text("LSAC permanently eliminated Analytical Reasoning (Logic Games) beginning with the August 2024 exam. If you are taking the current LSAT, you will NOT see Logic Games. This content is preserved for historical reference only.")
+                            .font(.caption).foregroundStyle(Color(red: 0.6, green: 0.1, blue: 0.1))
+                    }
+                }
+                .padding()
+                .background(Color.red.opacity(0.07), in: RoundedRectangle(cornerRadius: 12))
+                .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.red.opacity(0.25), lineWidth: 1))
+                .padding(.horizontal)
+
                 // Method
                 lgInfoSection(title: "The Universal LG Process") {
                     VStack(alignment: .leading, spacing: 8) {

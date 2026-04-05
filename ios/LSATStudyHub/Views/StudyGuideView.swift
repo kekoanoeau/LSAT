@@ -19,19 +19,20 @@ struct StudyGuideView: View {
                 }
 
                 Section {
-                    InfoRow(label: "Exam Format", value: "2 LR · 1 LG · 1 RC (scored)")
-                    InfoRow(label: "Total Questions", value: "~101 scored")
+                    InfoRow(label: "Exam Format", value: "2 LR + 1 RC (scored)")
+                    InfoRow(label: "Total Questions", value: "~77 scored")
                     InfoRow(label: "Time per Section", value: "35 minutes")
                     InfoRow(label: "Score Range", value: "120–180")
                     InfoRow(label: "Writing Sample", value: "Unscored, sent to schools")
+                    InfoRow(label: "Logic Games", value: "Removed Aug 2024")
                 } header: {
-                    Text("LSAT At a Glance")
+                    Text("LSAT At a Glance (Aug 2024+)")
                 }
 
                 Section {
-                    InfoRow(label: "Logical Reasoning", value: "~50% (2 sections)")
-                    InfoRow(label: "Analytical Reasoning", value: "~23% (1 section)")
-                    InfoRow(label: "Reading Comprehension", value: "~27% (1 section)")
+                    InfoRow(label: "Logical Reasoning", value: "~65% (2 sections, ~50 Qs)")
+                    InfoRow(label: "Reading Comprehension", value: "~35% (1 section, ~27 Qs)")
+                    InfoRow(label: "Analytical Reasoning", value: "Eliminated Aug 2024")
                 } header: {
                     Text("Score Weighting")
                 }

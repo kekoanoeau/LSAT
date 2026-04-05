@@ -37,21 +37,20 @@ final class StudyProgress: ObservableObject {
         sessions.reduce(0) { $0 + $1.attempted }
     }
 
-    // MARK: Estimated score (simplified mapping)
+    // MARK: Estimated score
+    // Aug 2024+ format: LR ~50 questions (~65%), RC ~27 questions (~35%). LG removed.
     var estimatedScore: Int? {
         let lr = accuracy(for: .lr).map { $0 * 100 } ?? -1
-        let lg = accuracy(for: .lg).map { $0 * 100 } ?? -1
         let rc = accuracy(for: .rc).map { $0 * 100 } ?? -1
 
-        // Need at least some data
-        guard lr >= 0 || lg >= 0 || rc >= 0 else { return nil }
+        guard lr >= 0 || rc >= 0 else { return nil }
 
         let lrPct = lr >= 0 ? lr : 65
-        let lgPct = lg >= 0 ? lg : 65
         let rcPct = rc >= 0 ? rc : 65
 
-        let raw = (lrPct / 100) * 50 + (lgPct / 100) * 23 + (rcPct / 100) * 27
-        let scaled = Int(120 + (raw / 100) * 60)
+        // ~77 total scored questions: 50 LR + 27 RC
+        let raw = (lrPct / 100) * 50 + (rcPct / 100) * 27
+        let scaled = Int(120 + (raw / 77) * 60)
         return min(180, max(120, scaled))
     }
 

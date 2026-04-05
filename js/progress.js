@@ -27,22 +27,10 @@ function getScoreContext(score) {
   return "Keep studying — every point counts!";
 }
 
-// Rough accuracy → score estimator (simplified mapping)
-function estimateScore(lrPct, lgPct, rcPct) {
-  // LSAT raw score: ~101 total scored questions
-  // LR: ~50 questions (50%), LG: ~23 (23%), RC: ~27 (27%)
-  const rawScore =
-    (lrPct / 100) * 50 +
-    (lgPct / 100) * 23 +
-    (rcPct / 100) * 27;
-  // Scale: 0 raw ≈ 120, 101 raw ≈ 180
-  const scaled = Math.round(120 + (rawScore / 101) * 60);
-  return Math.min(180, Math.max(120, scaled));
-}
-
 function renderAccuracyChart(acc) {
   const chart = document.getElementById('accuracyChart');
-  const sections = ['lr', 'lg', 'rc', 'mixed'];
+  // Aug 2024+: LG removed. Show LR, RC, mixed only.
+  const sections = ['lr', 'rc', 'mixed'];
   let html = '';
 
   let hasData = false;
@@ -72,32 +60,37 @@ function renderAccuracyChart(acc) {
   return hasData;
 }
 
+// Updated scoring: LR ~65% of exam (~50 questions), RC ~35% (~27 questions)
+// Total scored questions ≈ 77
+function estimateScore(lrPct, rcPct) {
+  const raw = (lrPct / 100) * 50 + (rcPct / 100) * 27;
+  const scaled = Math.round(120 + (raw / 77) * 60);
+  return Math.min(180, Math.max(120, scaled));
+}
+
 function renderScoreEstimate(acc) {
   const el = document.getElementById('scoreEstimate');
   const lrData = acc['lr'];
-  const lgData = acc['lg'];
   const rcData = acc['rc'];
 
-  if (!lrData && !lgData && !rcData) {
-    el.innerHTML = '<div style="font-size:.875rem;color:var(--text-muted);">Complete practice in all three sections to see a score estimate.</div>';
+  if (!lrData && !rcData) {
+    el.innerHTML = '<div style="font-size:.875rem;color:var(--text-muted);">Complete LR and RC practice to see a score estimate.</div>';
     return;
   }
 
   const lrPct = lrData && lrData.total > 0 ? (lrData.correct / lrData.total) * 100 : 65;
-  const lgPct = lgData && lgData.total > 0 ? (lgData.correct / lgData.total) * 100 : 65;
   const rcPct = rcData && rcData.total > 0 ? (rcData.correct / rcData.total) * 100 : 65;
 
-  const score = estimateScore(lrPct, lgPct, rcPct);
+  const score = estimateScore(lrPct, rcPct);
   const low = Math.max(120, score - 3);
   const high = Math.min(180, score + 3);
 
   const missing = [];
   if (!lrData || lrData.total === 0) missing.push('LR');
-  if (!lgData || lgData.total === 0) missing.push('LG');
   if (!rcData || rcData.total === 0) missing.push('RC');
 
   el.innerHTML = `
-    <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:.5rem;">Based on your practice accuracy</div>
+    <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:.5rem;">Based on your practice accuracy (LR + RC only — Aug 2024 format)</div>
     <div style="font-size:3.5rem;font-weight:800;color:var(--lr);line-height:1;">${score}</div>
     <div style="font-size:.9rem;color:var(--text-muted);margin-bottom:.5rem;">Estimated range: ${low}–${high}</div>
     <div style="font-size:.85rem;color:var(--text)">${getScoreContext(score)}</div>
@@ -153,7 +146,8 @@ function renderTips(acc) {
   const content = document.getElementById('tipsContent');
   const tips = [];
 
-  const sections = ['lr', 'lg', 'rc'];
+  // Aug 2024+: LG removed from LSAT
+  const sections = ['lr', 'rc'];
   sections.forEach(s => {
     if (!acc[s] || acc[s].total === 0) return;
     const pct = (acc[s].correct / acc[s].total) * 100;
@@ -217,10 +211,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('totalDone').textContent = total;
 
-  const sections = ['lr', 'lg', 'rc'];
+  // Aug 2024+: LG removed from LSAT
+  const sections = ['lr', 'rc'];
   sections.forEach(s => {
     const el = document.getElementById(`${s}Pct`);
-    if (acc[s] && acc[s].total > 0) {
+    if (el && acc[s] && acc[s].total > 0) {
       const pct = Math.round((acc[s].correct / acc[s].total) * 100);
       el.textContent = pct + '%';
     }

@@ -45,7 +45,6 @@ struct DashboardView: View {
     private var statsRow: some View {
         HStack(spacing: 12) {
             StatCard(label: "LR", value: progress.accuracyString(for: .lr), color: .indigo)
-            StatCard(label: "LG", value: progress.accuracyString(for: .lg), color: .green)
             StatCard(label: "RC", value: progress.accuracyString(for: .rc), color: .orange)
             StatCard(label: "Done", value: "\(progress.totalAttempted)", color: .gray)
         }
@@ -54,24 +53,26 @@ struct DashboardView: View {
     // MARK: Section Cards
     private var sectionCards: some View {
         VStack(spacing: 12) {
+            // August 2024 format notice
+            HStack(spacing: 10) {
+                Image(systemName: "info.circle.fill").foregroundStyle(.blue)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("August 2024 Format Update").font(.caption).bold().foregroundStyle(.blue)
+                    Text("Logic Games has been permanently removed. The LSAT is now 2 LR sections + 1 RC section.")
+                        .font(.caption2).foregroundStyle(Color(red: 0.12, green: 0.25, blue: 0.7))
+                }
+            }
+            .padding(10)
+            .background(Color.blue.opacity(0.08), in: RoundedRectangle(cornerRadius: 10))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue.opacity(0.2), lineWidth: 1))
+
             NavigationLink(destination: LogicalReasoningView()) {
                 SectionCard(
                     title: "Logical Reasoning",
-                    subtitle: "~50% of exam",
-                    description: "Argument analysis, flaw identification, assumptions, strengthen/weaken.",
+                    subtitle: "~65% of exam · 2 scored sections",
+                    description: "The dominant section — two LR sections of 24–26 questions each. Master argument analysis, flaw identification, assumptions, and inferences.",
                     chips: ["Flaw", "Assumption", "Strengthen", "Inference"],
                     color: .indigo
-                )
-            }
-            .buttonStyle(.plain)
-
-            NavigationLink(destination: LogicGamesView()) {
-                SectionCard(
-                    title: "Analytical Reasoning",
-                    subtitle: "~25% of exam",
-                    description: "Logic games — sequencing, grouping, in/out, and hybrid setups.",
-                    chips: ["Sequencing", "Grouping", "In/Out", "Hybrid"],
-                    color: .green
                 )
             }
             .buttonStyle(.plain)
@@ -79,10 +80,21 @@ struct DashboardView: View {
             NavigationLink(destination: ReadingCompView()) {
                 SectionCard(
                     title: "Reading Comprehension",
-                    subtitle: "~25% of exam",
-                    description: "Active reading, passage mapping, and question-type strategies.",
+                    subtitle: "~35% of exam · 1 scored section",
+                    description: "Active reading, passage mapping, and question-type strategies for dense academic texts.",
                     chips: ["Main Point", "Inference", "Author's Tone", "Comparative"],
                     color: .orange
+                )
+            }
+            .buttonStyle(.plain)
+
+            NavigationLink(destination: LogicGamesView()) {
+                SectionCard(
+                    title: "Logic Games — Archive",
+                    subtitle: "Removed August 2024",
+                    description: "Analytical Reasoning was permanently eliminated from the LSAT. This guide is for historical reference only.",
+                    chips: ["Removed", "Pre-Aug 2024"],
+                    color: .gray
                 )
             }
             .buttonStyle(.plain)

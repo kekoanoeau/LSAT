@@ -4,6 +4,16 @@ struct LogicalReasoningView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                // Format notice
+                HStack(spacing: 10) {
+                    Image(systemName: "info.circle.fill").foregroundStyle(.blue)
+                    Text("Aug 2024+ Format: LR is now ~65% of your score across 2 scored sections (~50 questions). Logic Games was removed — LR is the single most impactful section.")
+                        .font(.caption)
+                }
+                .padding(10)
+                .background(Color.blue.opacity(0.08), in: RoundedRectangle(cornerRadius: 10))
+                .padding(.horizontal)
+
                 // Method
                 InfoSection(title: "The LR Method", color: .indigo) {
                     VStack(alignment: .leading, spacing: 8) {
