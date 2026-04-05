@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LSAT Study Hub — Eddie's Prep</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">⚖</span>
+      <span>LSAT Study Hub</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Dashboard</a></li>
+      <li><a href="logical-reasoning.html">Logical Reasoning</a></li>
+      <li><a href="logic-games.html">Logic Games</a></li>
+      <li><a href="reading-comp.html">Reading Comp</a></li>
+      <li><a href="practice.html">Practice</a></li>
+      <li><a href="progress.html">Progress</a></li>
+    </ul>
+  </nav>
+
+  <main class="dashboard">
+    <header class="dash-header">
+      <div>
+        <h1>Welcome back, Eddie</h1>
+        <p class="subtitle" id="dateDisplay"></p>
+      </div>
+      <div class="score-badge">
+        <span class="score-label">Current Target</span>
+        <span class="score-value" id="targetScore">175</span>
+        <span class="score-label">/ 180</span>
+      </div>
+    </header>
+
+    <!-- Stats Row -->
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon lr-color">LR</div>
+        <div>
+          <div class="stat-number" id="lrAccuracy">—</div>
+          <div class="stat-label">LR Accuracy</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon lg-color">LG</div>
+        <div>
+          <div class="stat-number" id="lgAccuracy">—</div>
+          <div class="stat-label">LG Accuracy</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon rc-color">RC</div>
+        <div>
+          <div class="stat-number" id="rcAccuracy">—</div>
+          <div class="stat-label">RC Accuracy</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon total-color">∑</div>
+        <div>
+          <div class="stat-number" id="totalQuestions">0</div>
+          <div class="stat-label">Questions Done</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Study Sections -->
+    <section class="section-grid">
+      <a href="logical-reasoning.html" class="section-card lr-card">
+        <div class="card-header">
+          <span class="card-tag">~50% of exam</span>
+        </div>
+        <h2>Logical Reasoning</h2>
+        <p>Master argument analysis, flaw identification, assumption finding, strengthening/weakening, and inference questions.</p>
+        <div class="card-topics">
+          <span class="topic-chip">Flaw</span>
+          <span class="topic-chip">Assumption</span>
+          <span class="topic-chip">Strengthen</span>
+          <span class="topic-chip">Inference</span>
+          <span class="topic-chip">Parallel</span>
+          <span class="topic-chip">Point at Issue</span>
+        </div>
+        <div class="card-cta">Study Now →</div>
+      </a>
+
+      <a href="logic-games.html" class="section-card lg-card">
+        <div class="card-header">
+          <span class="card-tag">~25% of exam</span>
+        </div>
+        <h2>Analytical Reasoning</h2>
+        <p>Conquer logic games with sequencing, grouping, matching, and hybrid game types using proven diagramming methods.</p>
+        <div class="card-topics">
+          <span class="topic-chip">Sequencing</span>
+          <span class="topic-chip">Grouping</span>
+          <span class="topic-chip">Matching</span>
+          <span class="topic-chip">Hybrid</span>
+          <span class="topic-chip">In/Out</span>
+        </div>
+        <div class="card-cta">Study Now →</div>
+      </a>
+
+      <a href="reading-comp.html" class="section-card rc-card">
+        <div class="card-header">
+          <span class="card-tag">~25% of exam</span>
+        </div>
+        <h2>Reading Comprehension</h2>
+        <p>Develop active reading, passage mapping, and question-type strategies for dense academic passages.</p>
+        <div class="card-topics">
+          <span class="topic-chip">Main Point</span>
+          <span class="topic-chip">Detail</span>
+          <span class="topic-chip">Inference</span>
+          <span class="topic-chip">Author's Tone</span>
+          <span class="topic-chip">Comparative</span>
+        </div>
+        <div class="card-cta">Study Now →</div>
+      </a>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+      <h2>Quick Practice</h2>
+      <div class="action-row">
+        <a href="practice.html?type=lr&count=10" class="action-btn lr-btn">10 LR Questions</a>
+        <a href="practice.html?type=lg&count=1" class="action-btn lg-btn">1 Logic Game</a>
+        <a href="practice.html?type=rc&count=1" class="action-btn rc-btn">1 RC Passage</a>
+        <a href="practice.html?type=mixed&count=25" class="action-btn mixed-btn">Full Section Drill</a>
+      </div>
+    </section>
+
+    <!-- Study Plan -->
+    <section class="study-plan">
+      <h2>LSAT Study Strategy</h2>
+      <div class="plan-grid">
+        <div class="plan-phase">
+          <div class="phase-num">1</div>
+          <h3>Foundation (Weeks 1–4)</h3>
+          <ul>
+            <li>Learn all question types</li>
+            <li>Master basic diagramming for LG</li>
+            <li>Read full LSAC Official Prep materials</li>
+            <li>Untimed drills to build accuracy</li>
+          </ul>
+        </div>
+        <div class="plan-phase">
+          <div class="phase-num">2</div>
+          <h3>Skill Building (Weeks 5–8)</h3>
+          <ul>
+            <li>Timed section practice</li>
+            <li>Review every wrong answer in depth</li>
+            <li>Focus on weakest question types</li>
+            <li>Complete at least 2 full PTs</li>
+          </ul>
+        </div>
+        <div class="plan-phase">
+          <div class="phase-num">3</div>
+          <h3>Test Simulation (Weeks 9–12)</h3>
+          <ul>
+            <li>Full timed PTs weekly</li>
+            <li>Strict test-day conditions</li>
+            <li>Blind review methodology</li>
+            <li>Refine timing strategies</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources">
+      <h2>Official & Approved Resources</h2>
+      <div class="resource-grid">
+        <div class="resource-card">
+          <h3>LSAC Official Materials</h3>
+          <p>The gold standard — official PrepTests are the only source of real LSAT questions. Use LSAC LawHub for digital practice.</p>
+          <span class="resource-tag official">Official</span>
+        </div>
+        <div class="resource-card">
+          <h3>The LSAT Trainer (Mike Kim)</h3>
+          <p>Widely considered the best third-party LSAT prep book. Clear explanations with a focus on test-taking strategy.</p>
+          <span class="resource-tag recommended">Recommended</span>
+        </div>
+        <div class="resource-card">
+          <h3>PowerScore Bibles</h3>
+          <p>LR, LG, and RC Bibles provide deep coverage of each section. Best for methodical learners who want comprehensive theory.</p>
+          <span class="resource-tag recommended">Recommended</span>
+        </div>
+        <div class="resource-card">
+          <h3>7Sage LSAT</h3>
+          <p>Excellent video explanations for every PrepTest question. The Logic Games curriculum is considered best-in-class.</p>
+          <span class="resource-tag recommended">Recommended</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>LSAT Study Hub — Built for Eddie's Prep &nbsp;|&nbsp; Content based on LSAC official test specifications</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

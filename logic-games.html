@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logic Games — LSAT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">⚖</span>
+      <span>LSAT Study Hub</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="logical-reasoning.html">Logical Reasoning</a></li>
+      <li><a href="logic-games.html" class="active">Logic Games</a></li>
+      <li><a href="reading-comp.html">Reading Comp</a></li>
+      <li><a href="practice.html">Practice</a></li>
+      <li><a href="progress.html">Progress</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+    <h1 class="page-title" style="color: var(--lg);">Analytical Reasoning (Logic Games)</h1>
+    <p class="page-subtitle">
+      One scored section with 4 games (~23 questions total). Logic Games is the most learnable section — mastery through diagramming and repeated practice.
+    </p>
+
+    <!-- Core Approach -->
+    <section class="strategy-card" style="border-left-color: var(--lg); margin-bottom: 2rem;">
+      <h3 style="color: var(--lg);">The Universal LG Process</h3>
+      <ol style="padding-left:1.2rem;margin-top:.5rem;">
+        <li style="margin-bottom:.4rem;"><strong>Read the scenario</strong> — identify game type, players, and slots.</li>
+        <li style="margin-bottom:.4rem;"><strong>Set up your master diagram</strong> — draw slots/groups before touching rules.</li>
+        <li style="margin-bottom:.4rem;"><strong>Symbolize every rule</strong> clearly and write the contrapositive where applicable.</li>
+        <li style="margin-bottom:.4rem;"><strong>Make inferences</strong> by combining rules before answering any questions.</li>
+        <li style="margin-bottom:.4rem;"><strong>Answer "If" questions</strong> in a fresh diagram, not the master.</li>
+        <li><strong>Use elimination</strong> — work with the answer choices rather than building from scratch on every question.</li>
+      </ol>
+    </section>
+
+    <!-- Game Types -->
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Game Type Reference</h2>
+    <div class="game-type-grid">
+
+      <div class="game-card">
+        <h3>Linear / Sequencing</h3>
+        <p>Place variables into ordered slots (positions 1–7, Monday–Friday, etc.). The most common game type on the LSAT.</p>
+        <div class="game-example">
+          <strong>Example Setup</strong>
+          Seven houses on a street — A, B, C, D, E, F, G — each in a unique position from 1 to 7.
+        </div>
+        <div class="diagram-steps">
+          <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--lg);margin-bottom:.4rem;">Diagram Approach</h4>
+          <ol>
+            <li>Draw 7 numbered slots in a row</li>
+            <li>List variables to the side: A B C D E F G</li>
+            <li>Symbolize ordering rules: A &lt; B (A before B)</li>
+            <li>Use dashes for blocks: [AB] (A immediately before B)</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <h3>Grouping</h3>
+        <p>Assign variables into two or more distinct groups. Focus on who can/cannot be in the same group.</p>
+        <div class="game-example">
+          <strong>Example Setup</strong>
+          Six employees split into two teams of three: Team 1 and Team 2.
+        </div>
+        <div class="diagram-steps">
+          <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--lg);margin-bottom:.4rem;">Diagram Approach</h4>
+          <ol>
+            <li>Draw two columns with labeled headers</li>
+            <li>Note group sizes and any fixed assignments</li>
+            <li>Symbolize "not together": A ≠ B (A and B in different groups)</li>
+            <li>Symbolize "together": A = B (must be in same group)</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <h3>In/Out (Selection)</h3>
+        <p>Select a subset of variables to be "in" while the rest are "out." Conditional rules dominate.</p>
+        <div class="game-example">
+          <strong>Example Setup</strong>
+          A committee selects at least 3 of 7 candidates: A, B, C, D, E, F, G.
+        </div>
+        <div class="diagram-steps">
+          <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--lg);margin-bottom:.4rem;">Diagram Approach</h4>
+          <ol>
+            <li>Draw two columns: IN | OUT</li>
+            <li>Translate all rules into conditional form</li>
+            <li>Always write contrapositive next to each rule</li>
+            <li>Chain conditionals together to find forced outcomes</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <h3>Matching</h3>
+        <p>Assign attributes to variables or vice versa. Variables can receive multiple attributes.</p>
+        <div class="game-example">
+          <strong>Example Setup</strong>
+          Five students each take one or more of three subjects: Math, Science, English.
+        </div>
+        <div class="diagram-steps">
+          <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--lg);margin-bottom:.4em;">Diagram Approach</h4>
+          <ol>
+            <li>Draw a grid: variables as rows, attributes as columns</li>
+            <li>Fill in cells as Yes / No / Unknown</li>
+            <li>Look for forced placements from rules</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <h3>Hybrid Games</h3>
+        <p>Combines two game types — usually sequencing + grouping or selection + sequencing. More complex but same tools apply.</p>
+        <div class="game-example">
+          <strong>Example Setup</strong>
+          Assign 6 people to 3 ranked positions (1st, 2nd, 3rd) with exactly 2 people per position.
+        </div>
+        <div class="diagram-steps">
+          <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--lg);margin-bottom:.4rem;">Diagram Approach</h4>
+          <ol>
+            <li>Identify both components of the hybrid</li>
+            <li>Build a diagram that captures both dimensions</li>
+            <li>Separate rules by type; apply each component's rules methodically</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="game-card">
+        <h3>Advanced Linear (Multi-Tier)</h3>
+        <p>Two rows of ordered slots that must be matched to each other (e.g., employees scheduled to floors on days).</p>
+        <div class="game-example">
+          <strong>Example Setup</strong>
+          Four people visit on Monday–Thursday; each is assigned either morning or afternoon.
+        </div>
+        <div class="diagram-steps">
+          <h4 style="font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--lg);margin-bottom:.4rem;">Diagram Approach</h4>
+          <ol>
+            <li>Stack two rows with shared column headers (days/positions)</li>
+            <li>Row 1 = one attribute; Row 2 = another</li>
+            <li>Rules often link values in different rows</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rules Reference -->
+    <section class="rules-section">
+      <h2>Rule Symbolization Quick Reference</h2>
+      <table class="rules-table">
+        <thead>
+          <tr><th>Rule Wording</th><th>Symbol</th><th>Contrapositive / Implication</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>"A is before B"</td>
+            <td><code>A &lt; B</code></td>
+            <td>B cannot be before A; if B = slot 1, A cannot be placed</td>
+          </tr>
+          <tr>
+            <td>"A is immediately before B"</td>
+            <td><code>AB</code> (block)</td>
+            <td>A cannot be in last slot; B cannot be in first slot</td>
+          </tr>
+          <tr>
+            <td>"A is not adjacent to B"</td>
+            <td><code>A ≁ B</code></td>
+            <td>No slot where |pos(A) − pos(B)| = 1</td>
+          </tr>
+          <tr>
+            <td>"If A is selected, B is selected"</td>
+            <td><code>A → B</code></td>
+            <td><code>¬B → ¬A</code></td>
+          </tr>
+          <tr>
+            <td>"A and B cannot both be selected"</td>
+            <td><code>¬(A ∧ B)</code></td>
+            <td><code>A → ¬B</code> and <code>B → ¬A</code></td>
+          </tr>
+          <tr>
+            <td>"At least one of A or B is selected"</td>
+            <td><code>A ∨ B</code></td>
+            <td><code>¬A → B</code> and <code>¬B → A</code></td>
+          </tr>
+          <tr>
+            <td>"Exactly one of A, B, C is selected"</td>
+            <td>1 of {A,B,C}</td>
+            <td>If A is in, B and C are out; etc.</td>
+          </tr>
+          <tr>
+            <td>"A is in the same group as B"</td>
+            <td><code>A ↔ B</code></td>
+            <td>If A is in Group 1, B is in Group 1; split contrapositively</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Question Types -->
+    <section class="rules-section">
+      <h2>Logic Games Question Types</h2>
+      <table class="rules-table">
+        <thead>
+          <tr><th>Type</th><th>Stem Clue</th><th>Best Approach</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Complete &amp; Accurate List</strong></td>
+            <td>"Which could be a complete and accurate list of..."</td>
+            <td>Use each rule to eliminate one answer choice. Fastest when done in order.</td>
+          </tr>
+          <tr>
+            <td><strong>Could Be True</strong></td>
+            <td>"Which of the following could be true?"</td>
+            <td>Find the answer that doesn't violate any rule. Eliminate 4 answers that must be false.</td>
+          </tr>
+          <tr>
+            <td><strong>Must Be True</strong></td>
+            <td>"Which of the following must be true?"</td>
+            <td>Eliminate answers that are only sometimes true. The correct answer holds in all valid scenarios.</td>
+          </tr>
+          <tr>
+            <td><strong>Cannot Be True</strong></td>
+            <td>"Which of the following cannot be true?"</td>
+            <td>Find the answer that violates at least one rule in every scenario.</td>
+          </tr>
+          <tr>
+            <td><strong>Conditional "If" Question</strong></td>
+            <td>"If A is placed in position 3, which..."</td>
+            <td>Draw a fresh diagram, add the new condition, make all inferences, then answer.</td>
+          </tr>
+          <tr>
+            <td><strong>Rule Substitution</strong></td>
+            <td>"Which rule could replace [rule X] while having the same effect?"</td>
+            <td>Re-derive what the original rule did (its net effect) and find the answer that produces the same constraint.</td>
+          </tr>
+          <tr>
+            <td><strong>Add a Rule</strong></td>
+            <td>"If the following additional rule is in effect..."</td>
+            <td>Treat like a conditional "If" question — add to master diagram and make inferences.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tips -->
+    <section style="margin-bottom:2rem;">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">High-Value Tips</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;">
+        <div class="resource-card">
+          <h3>Work "If" Questions First</h3>
+          <p>Conditional questions give you free information. The work you do builds towards the global questions too.</p>
+        </div>
+        <div class="resource-card">
+          <h3>Identify "Floaters"</h3>
+          <p>Variables with no rules are floaters — they can often go anywhere. Track them separately to avoid overlooking them.</p>
+        </div>
+        <div class="resource-card">
+          <h3>Build a Limited Scenario Template</h3>
+          <p>If a game has only 2–3 ways things can be arranged, sketch all scenarios upfront and answer questions by checking templates.</p>
+        </div>
+        <div class="resource-card">
+          <h3>Never Skip Inferences</h3>
+          <p>Rules that share a variable produce inferences. Combine every pair of rules that share a variable. This is where speed comes from.</p>
+        </div>
+        <div class="resource-card">
+          <h3>Watch Game Size / Slot Count</h3>
+          <p>If you have 7 variables and 7 slots, it's a 1:1 placement. If there are 8 variables and 5 slots, some must be out — a selection component is implied.</p>
+        </div>
+        <div class="resource-card">
+          <h3>Time Budget: 8–9 min per game</h3>
+          <p>With 35 minutes for 4 games, aim for ~8 minutes each. Harder games often come 2nd or 3rd — skip and return if stuck.</p>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="practice.html?type=lg" class="action-btn lg-btn">Practice Logic Games →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>LSAT Study Hub — Built for Eddie's Prep</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

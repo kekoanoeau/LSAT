@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Progress — LSAT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">⚖</span>
+      <span>LSAT Study Hub</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="logical-reasoning.html">Logical Reasoning</a></li>
+      <li><a href="logic-games.html">Logic Games</a></li>
+      <li><a href="reading-comp.html">Reading Comp</a></li>
+      <li><a href="practice.html">Practice</a></li>
+      <li><a href="progress.html" class="active">Progress</a></li>
+    </ul>
+  </nav>
+
+  <main class="progress-content">
+    <h1 class="page-title">Your Progress</h1>
+    <p class="page-subtitle">Track your performance across all sections and identify areas to improve.</p>
+
+    <!-- Overview Stats -->
+    <div class="stats-row" style="margin-bottom:1.5rem;">
+      <div class="stat-card">
+        <div class="stat-icon total-color">∑</div>
+        <div>
+          <div class="stat-number" id="totalDone">0</div>
+          <div class="stat-label">Questions Attempted</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon lr-color">LR</div>
+        <div>
+          <div class="stat-number" id="lrPct">—</div>
+          <div class="stat-label">LR Accuracy</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon lg-color">LG</div>
+        <div>
+          <div class="stat-number" id="lgPct">—</div>
+          <div class="stat-label">LG Accuracy</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon rc-color">RC</div>
+        <div>
+          <div class="stat-number" id="rcPct">—</div>
+          <div class="stat-label">RC Accuracy</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accuracy Chart -->
+    <div class="chart-card">
+      <h3>Accuracy by Section</h3>
+      <div class="bar-chart" id="accuracyChart">
+        <div style="color:var(--text-muted);font-size:.875rem;">Complete some practice sessions to see your accuracy here.</div>
+      </div>
+    </div>
+
+    <!-- Score Estimator -->
+    <div class="chart-card">
+      <h3>Estimated LSAT Score Range</h3>
+      <div id="scoreEstimate" style="text-align:center;padding:1rem 0;">
+        <div style="font-size:.875rem;color:var(--text-muted);">Complete practice in all three sections to see a score estimate.</div>
+      </div>
+      <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem;">
+        Note: This estimate is based on your practice accuracy only. Official PrepTests under timed conditions are the best predictor of your actual score.
+      </p>
+    </div>
+
+    <!-- Session History -->
+    <div class="chart-card">
+      <h3>Recent Sessions</h3>
+      <div id="historyContainer">
+        <div style="color:var(--text-muted);font-size:.875rem;">No sessions recorded yet. Start a practice session to track your progress!</div>
+      </div>
+
+      <button class="btn btn-secondary" onclick="clearHistory()" style="margin-top:1rem;font-size:.8rem;" id="clearBtn" style="display:none;">
+        Clear History
+      </button>
+    </div>
+
+    <!-- Study Tips Based on Performance -->
+    <div class="chart-card" id="tipsCard">
+      <h3>Personalized Study Tips</h3>
+      <div id="tipsContent">
+        <p style="font-size:.875rem;color:var(--text-muted);">Complete some practice to get personalized recommendations.</p>
+      </div>
+    </div>
+
+    <!-- Target Score -->
+    <div class="chart-card">
+      <h3>Set Your Target Score</h3>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <label style="font-size:.85rem;font-weight:600;display:block;margin-bottom:.4rem;">Target Score (120–180)</label>
+          <input type="number" id="targetInput" min="120" max="180" value="175"
+            style="padding:.5rem .75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;width:100px;"
+          />
+        </div>
+        <button class="btn btn-primary" onclick="saveTarget()" style="margin-top:1.25rem;">Save Target</button>
+        <div id="targetSaved" style="font-size:.85rem;color:var(--lg);display:none;margin-top:1.25rem;">✓ Saved!</div>
+      </div>
+      <div id="targetContext" style="margin-top:1rem;font-size:.85rem;color:var(--text-muted);"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>LSAT Study Hub — Built for Eddie's Prep</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/progress.js"></script>
+</body>
+</html>

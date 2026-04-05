@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logical Reasoning — LSAT Study Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">⚖</span>
+      <span>LSAT Study Hub</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="logical-reasoning.html" class="active">Logical Reasoning</a></li>
+      <li><a href="logic-games.html">Logic Games</a></li>
+      <li><a href="reading-comp.html">Reading Comp</a></li>
+      <li><a href="practice.html">Practice</a></li>
+      <li><a href="progress.html">Progress</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+    <h1 class="page-title" style="color: var(--lr);">Logical Reasoning</h1>
+    <p class="page-subtitle">
+      LR makes up ~50% of the LSAT. Two scored LR sections with 24–26 questions each. Master these question types to maximize your score.
+    </p>
+
+    <!-- Core Approach -->
+    <section class="strategy-card" style="border-left-color: var(--lr); margin-bottom: 2rem;">
+      <h3>The LR Method (Apply to Every Question)</h3>
+      <ol style="padding-left:1.2rem; margin-top:.5rem;">
+        <li style="margin-bottom:.4rem;"><strong>Identify the question type</strong> from the stem before reading the stimulus.</li>
+        <li style="margin-bottom:.4rem;"><strong>Read the stimulus actively</strong> — tag conclusion, premises, and assumptions.</li>
+        <li style="margin-bottom:.4rem;"><strong>Pre-phrase an answer</strong> before looking at the choices.</li>
+        <li style="margin-bottom:.4rem;"><strong>Eliminate aggressively</strong> — 4 answers are wrong for specific reasons.</li>
+        <li><strong>Pick the best answer</strong>, not a perfect one.</li>
+      </ol>
+    </section>
+
+    <!-- Argument Anatomy -->
+    <section style="margin-bottom:2rem;">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Anatomy of an LSAT Argument</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;">
+        <div class="resource-card">
+          <h3>Conclusion</h3>
+          <p>The main point the author is trying to prove. Look for: <em>therefore, thus, hence, so, clearly, it follows that, this shows that.</em></p>
+        </div>
+        <div class="resource-card">
+          <h3>Premise</h3>
+          <p>Evidence used to support the conclusion. Look for: <em>because, since, given that, for, as, in light of, the fact that.</em></p>
+        </div>
+        <div class="resource-card">
+          <h3>Assumption</h3>
+          <p>An unstated premise the argument requires to be valid. The gap between premises and conclusion. Critical to most LR questions.</p>
+        </div>
+        <div class="resource-card">
+          <h3>Flaw</h3>
+          <p>The logical error in the argument. The LSAT uses a finite set of recurring flaws — learn them all by name.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question Types -->
+    <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:1rem;">Question Type Reference</h2>
+    <div class="qtype-grid">
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Assumption</span>
+          <span class="qtype-freq">~12% of LR</span>
+        </div>
+        <p class="qtype-desc">Find the unstated premise the argument depends on to work.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"The argument assumes which of the following?"</li>
+            <li>"Which of the following is an assumption required by the argument?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Negation Test</strong>
+          Negate each answer choice. If the negation destroys the argument, that's the assumption. Works for necessary assumptions.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Strengthen</span>
+          <span class="qtype-freq">~10% of LR</span>
+        </div>
+        <p class="qtype-desc">Find the answer that most supports the argument's conclusion.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"Which of the following, if true, most strengthens the argument?"</li>
+            <li>"Which most supports the argument above?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Fill the Gap</strong>
+          Find the assumption, then look for an answer that confirms or supports that assumption. New information is fine.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Weaken</span>
+          <span class="qtype-freq">~12% of LR</span>
+        </div>
+        <p class="qtype-desc">Find the answer that most undermines the argument's conclusion.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"Which of the following, if true, most seriously weakens the argument?"</li>
+            <li>"Which most undermines the conclusion above?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Attack the Assumption</strong>
+          Identify the gap. The correct answer will show the assumption is wrong or introduce a counter-cause/alternative explanation.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Flaw</span>
+          <span class="qtype-freq">~13% of LR</span>
+        </div>
+        <p class="qtype-desc">Identify the logical error in the argument's reasoning.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"The argument is flawed because it..."</li>
+            <li>"The reasoning is most vulnerable to which criticism?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Common Flaws to Memorize</strong>
+          Causal flaw, ad hominem, circular reasoning, false dichotomy, equivocation, part-to-whole, composition/division, sampling error, appeal to authority.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Inference / Must Be True</span>
+          <span class="qtype-freq">~11% of LR</span>
+        </div>
+        <p class="qtype-desc">Find what must be true (or is most strongly supported) based only on the stimulus.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"Which of the following can be properly inferred?"</li>
+            <li>"Which is most strongly supported by the information above?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Stay in the Box</strong>
+          Only use information given. The correct answer follows directly from the stimulus — no outside facts. Low claim answers are safer.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Main Conclusion</span>
+          <span class="qtype-freq">~6% of LR</span>
+        </div>
+        <p class="qtype-desc">Identify the author's central claim that everything else supports.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"The main conclusion of the argument is that..."</li>
+            <li>"Which best expresses the main point of the argument?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Why Test</strong>
+          For each answer, ask: "Does the argument give reasons FOR this?" If yes, it could be the conclusion. The conclusion is never supported by another answer choice.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Parallel Reasoning</span>
+          <span class="qtype-freq">~6% of LR</span>
+        </div>
+        <p class="qtype-desc">Find the answer with argument structure most similar to the stimulus.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"Which is most similar in its reasoning to the argument above?"</li>
+            <li>"The flawed reasoning above is most similar to which?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Abstract the Structure</strong>
+          Convert the argument to abstract form (e.g., "All A are B; X is A; therefore X is B"). Match the logical form, not the topic.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Principle (Apply)</span>
+          <span class="qtype-freq">~8% of LR</span>
+        </div>
+        <p class="qtype-desc">Apply a stated principle to a specific situation, or find a principle that justifies the argument.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"Which principle, if valid, most helps to justify the reasoning?"</li>
+            <li>"The cases above most closely conform to which principle?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Treat as Strengthen</strong>
+          "Justify the reasoning" questions work like assumption/strengthen. Find the rule that bridges the gap between the premises and conclusion.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Point at Issue / Agree</span>
+          <span class="qtype-freq">~5% of LR</span>
+        </div>
+        <p class="qtype-desc">In a dialogue, find what the two speakers actually disagree (or agree) about.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"The dialogue above provides most support for the claim that A and B disagree about..."</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Commitment Test</strong>
+          The correct answer must be something both speakers have taken a clear position on — one agreeing, one disagreeing (or both agreeing). Eliminate any answer where one speaker is silent.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Role of Statement</span>
+          <span class="qtype-freq">~4% of LR</span>
+        </div>
+        <p class="qtype-desc">Identify what function a boldfaced or specified portion plays in the argument.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"The portion in boldface plays which role in the argument?"</li>
+            <li>"The claim that [X] functions as..."</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Label First</strong>
+          Before reading the answers, label each boldfaced portion: main conclusion, sub-conclusion, premise, counter-premise, background, or objection. Match to answer choices.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Sufficient Assumption</span>
+          <span class="qtype-freq">~5% of LR</span>
+        </div>
+        <p class="qtype-desc">Find the assumption that, if true, <em>guarantees</em> the conclusion follows.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"The conclusion follows logically if which is assumed?"</li>
+            <li>"Which, if assumed, allows the conclusion to be properly drawn?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Conditional Logic</strong>
+          Often involves formal logic. Identify the logical gap and look for a conditional statement that bridges the conclusion to the premises. Contrapositive thinking is essential.
+        </div>
+      </div>
+
+      <div class="qtype-card">
+        <div class="qtype-header">
+          <span class="qtype-name">Explain / Resolve</span>
+          <span class="qtype-freq">~4% of LR</span>
+        </div>
+        <p class="qtype-desc">Find the answer that best explains an apparent discrepancy or paradox.</p>
+        <div class="qtype-stems">
+          <h4>Common Stems</h4>
+          <ul>
+            <li>"Which of the following, if true, most helps to explain the discrepancy?"</li>
+            <li>"Which most helps to resolve the apparent paradox?"</li>
+          </ul>
+        </div>
+        <div class="strategy-box">
+          <strong>Strategy: Embrace Both Facts</strong>
+          The correct answer must make BOTH surprising facts true simultaneously. Answers that only explain one side are wrong.
+        </div>
+      </div>
+    </div>
+
+    <!-- Common Flaws Reference -->
+    <section class="rules-section">
+      <h2>Common Logical Flaws Reference</h2>
+      <table class="rules-table">
+        <thead>
+          <tr>
+            <th>Flaw Name</th>
+            <th>Description</th>
+            <th>How to Spot It</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Causal Flaw</strong></td>
+            <td>Concludes A causes B merely because A correlates with B.</td>
+            <td>Look for correlation → causation jumps. Correct by: alternative cause, reversed causation, coincidence.</td>
+          </tr>
+          <tr>
+            <td><strong>Sampling / Hasty Generalization</strong></td>
+            <td>Draws a broad conclusion from an unrepresentative or small sample.</td>
+            <td>"Studies show..." then applies to everyone. The sample may be biased or too small.</td>
+          </tr>
+          <tr>
+            <td><strong>False Dichotomy</strong></td>
+            <td>Presents only two options as if no others exist.</td>
+            <td>"Either X or Y; not X; therefore Y." But what about Z?</td>
+          </tr>
+          <tr>
+            <td><strong>Ad Hominem</strong></td>
+            <td>Attacks the person making a claim rather than the claim itself.</td>
+            <td>"X says P, but X has a conflict of interest" — doesn't mean P is false.</td>
+          </tr>
+          <tr>
+            <td><strong>Circular Reasoning</strong></td>
+            <td>Uses the conclusion as a premise (begging the question).</td>
+            <td>The "support" for the conclusion just restates the conclusion in different words.</td>
+          </tr>
+          <tr>
+            <td><strong>Equivocation</strong></td>
+            <td>Uses the same word in two different senses in the same argument.</td>
+            <td>The word "right" meaning moral vs. correct; "law" meaning legal vs. scientific.</td>
+          </tr>
+          <tr>
+            <td><strong>Part-to-Whole / Composition</strong></td>
+            <td>What's true of a part is assumed true of the whole.</td>
+            <td>"Each player is excellent, so the team is excellent."</td>
+          </tr>
+          <tr>
+            <td><strong>Whole-to-Part / Division</strong></td>
+            <td>What's true of the whole is assumed true of each part.</td>
+            <td>"The company is profitable, so every department is profitable."</td>
+          </tr>
+          <tr>
+            <td><strong>Scope Shift</strong></td>
+            <td>Conclusion uses different terms than the premises establish.</td>
+            <td>Premises about "some" conclude about "all"; premises about possibility conclude about actuality.</td>
+          </tr>
+          <tr>
+            <td><strong>Appeal to Authority</strong></td>
+            <td>Accepts a claim solely on the basis of who said it.</td>
+            <td>"Expert X says Y is true" — but the expert may be outside their expertise or biased.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Conditional Logic -->
+    <section class="rules-section">
+      <h2>Conditional Logic Quick Reference</h2>
+      <table class="rules-table">
+        <thead>
+          <tr><th>Form</th><th>Read As</th><th>Contrapositive</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>If A → B</code></td>
+            <td>All A are B / Whenever A, then B</td>
+            <td><code>If ¬B → ¬A</code></td>
+          </tr>
+          <tr>
+            <td><code>A only if B</code></td>
+            <td><code>If A → B</code></td>
+            <td><code>If ¬B → ¬A</code></td>
+          </tr>
+          <tr>
+            <td><code>All A are B</code></td>
+            <td><code>If A → B</code></td>
+            <td><code>If ¬B → ¬A</code></td>
+          </tr>
+          <tr>
+            <td><code>No A are B</code></td>
+            <td><code>If A → ¬B</code></td>
+            <td><code>If B → ¬A</code></td>
+          </tr>
+          <tr>
+            <td><code>Unless B, not A</code></td>
+            <td><code>If A → B</code></td>
+            <td><code>If ¬B → ¬A</code></td>
+          </tr>
+          <tr>
+            <td><code>A unless B</code></td>
+            <td><code>If ¬B → A</code></td>
+            <td><code>If ¬A → B</code></td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="font-size:.82rem;color:var(--text-muted);margin-top:.75rem;"><strong>Invalid inferences:</strong> Affirming the consequent (If A→B; B; therefore A — WRONG) and Denying the antecedent (If A→B; ¬A; therefore ¬B — WRONG).</p>
+    </section>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="practice.html?type=lr" class="action-btn lr-btn">Practice LR Questions →</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>LSAT Study Hub — Built for Eddie's Prep</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
