@@ -1,0 +1,234 @@
+// =============================================
+// LSAT Study Hub — Progress Page
+// =============================================
+
+const SECTION_LABELS = { lr: 'Logical Reasoning', lg: 'Logic Games', rc: 'Reading Comp', mixed: 'Mixed' };
+const SECTION_COLORS = { lr: 'var(--lr)', lg: 'var(--lg)', rc: 'var(--rc)', mixed: '#7c3aed' };
+
+// LSAT score percentile context
+const SCORE_CONTEXT = {
+  180: "Perfect score — 99.9th percentile. Top law schools.",
+  175: "99th percentile. Competitive for any law school.",
+  170: "97th percentile. Extremely competitive.",
+  165: "92nd percentile. Very strong for T14 schools.",
+  160: "80th percentile. Competitive for top-50 programs.",
+  155: "66th percentile. Median for many law schools.",
+  150: "44th percentile. Above average.",
+  145: "26th percentile. Below median for most programs.",
+  140: "13th percentile. Significant improvement needed.",
+  135: "5th percentile. Major foundational work required."
+};
+
+function getScoreContext(score) {
+  const keys = Object.keys(SCORE_CONTEXT).map(Number).sort((a, b) => b - a);
+  for (const k of keys) {
+    if (score >= k) return SCORE_CONTEXT[k];
+  }
+  return "Keep studying — every point counts!";
+}
+
+// Rough accuracy → score estimator (simplified mapping)
+function estimateScore(lrPct, lgPct, rcPct) {
+  // LSAT raw score: ~101 total scored questions
+  // LR: ~50 questions (50%), LG: ~23 (23%), RC: ~27 (27%)
+  const rawScore =
+    (lrPct / 100) * 50 +
+    (lgPct / 100) * 23 +
+    (rcPct / 100) * 27;
+  // Scale: 0 raw ≈ 120, 101 raw ≈ 180
+  const scaled = Math.round(120 + (rawScore / 101) * 60);
+  return Math.min(180, Math.max(120, scaled));
+}
+
+function renderAccuracyChart(acc) {
+  const chart = document.getElementById('accuracyChart');
+  const sections = ['lr', 'lg', 'rc', 'mixed'];
+  let html = '';
+
+  let hasData = false;
+  sections.forEach(s => {
+    if (!acc[s] || acc[s].total === 0) return;
+    hasData = true;
+    const pct = Math.round((acc[s].correct / acc[s].total) * 100);
+    html += `
+      <div class="bar-row">
+        <span class="bar-label">${SECTION_LABELS[s]}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${pct}%;background:${SECTION_COLORS[s]}"></div>
+        </div>
+        <span class="bar-pct">${pct}%</span>
+      </div>
+      <div style="font-size:.75rem;color:var(--text-muted);padding-left:calc(140px + .75rem);margin-top:-.5rem;margin-bottom:.25rem;">
+        ${acc[s].correct} correct of ${acc[s].total} attempted
+      </div>`;
+  });
+
+  if (!hasData) {
+    chart.innerHTML = '<div style="color:var(--text-muted);font-size:.875rem;">Complete some practice sessions to see your accuracy here.</div>';
+  } else {
+    chart.innerHTML = html;
+  }
+
+  return hasData;
+}
+
+function renderScoreEstimate(acc) {
+  const el = document.getElementById('scoreEstimate');
+  const lrData = acc['lr'];
+  const lgData = acc['lg'];
+  const rcData = acc['rc'];
+
+  if (!lrData && !lgData && !rcData) {
+    el.innerHTML = '<div style="font-size:.875rem;color:var(--text-muted);">Complete practice in all three sections to see a score estimate.</div>';
+    return;
+  }
+
+  const lrPct = lrData && lrData.total > 0 ? (lrData.correct / lrData.total) * 100 : 65;
+  const lgPct = lgData && lgData.total > 0 ? (lgData.correct / lgData.total) * 100 : 65;
+  const rcPct = rcData && rcData.total > 0 ? (rcData.correct / rcData.total) * 100 : 65;
+
+  const score = estimateScore(lrPct, lgPct, rcPct);
+  const low = Math.max(120, score - 3);
+  const high = Math.min(180, score + 3);
+
+  const missing = [];
+  if (!lrData || lrData.total === 0) missing.push('LR');
+  if (!lgData || lgData.total === 0) missing.push('LG');
+  if (!rcData || rcData.total === 0) missing.push('RC');
+
+  el.innerHTML = `
+    <div style="font-size:.82rem;color:var(--text-muted);margin-bottom:.5rem;">Based on your practice accuracy</div>
+    <div style="font-size:3.5rem;font-weight:800;color:var(--lr);line-height:1;">${score}</div>
+    <div style="font-size:.9rem;color:var(--text-muted);margin-bottom:.5rem;">Estimated range: ${low}–${high}</div>
+    <div style="font-size:.85rem;color:var(--text)">${getScoreContext(score)}</div>
+    ${missing.length > 0 ? `<div style="font-size:.78rem;color:var(--rc);margin-top:.5rem;">⚠ Using estimated 65% for ${missing.join(', ')} (no data yet)</div>` : ''}
+  `;
+}
+
+function renderHistory() {
+  const history = JSON.parse(localStorage.getItem('lsat_history') || '[]');
+  const container = document.getElementById('historyContainer');
+  const clearBtn = document.getElementById('clearBtn');
+
+  if (history.length === 0) {
+    container.innerHTML = '<div style="color:var(--text-muted);font-size:.875rem;">No sessions recorded yet. Start a practice session to track your progress!</div>';
+    return;
+  }
+
+  clearBtn.style.display = 'inline-block';
+
+  const rows = history.slice(0, 20).map(h => {
+    const date = new Date(h.date);
+    const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const timeStr = date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    const pct = h.pct || 0;
+    const pctColor = pct >= 80 ? 'var(--lg)' : pct >= 60 ? 'var(--rc)' : '#ef4444';
+    return `<tr>
+      <td>${dateStr} ${timeStr}</td>
+      <td>${SECTION_LABELS[h.section] || h.section}</td>
+      <td class="badge-correct">${h.correct}</td>
+      <td class="badge-wrong">${(h.total - h.skipped) - h.correct}</td>
+      <td>${h.skipped}</td>
+      <td style="font-weight:700;color:${pctColor}">${pct}%</td>
+    </tr>`;
+  }).join('');
+
+  container.innerHTML = `
+    <table class="history-table">
+      <thead>
+        <tr>
+          <th>Date &amp; Time</th>
+          <th>Section</th>
+          <th>Correct</th>
+          <th>Wrong</th>
+          <th>Skipped</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function renderTips(acc) {
+  const content = document.getElementById('tipsContent');
+  const tips = [];
+
+  const sections = ['lr', 'lg', 'rc'];
+  sections.forEach(s => {
+    if (!acc[s] || acc[s].total === 0) return;
+    const pct = (acc[s].correct / acc[s].total) * 100;
+    if (pct < 60) {
+      tips.push({ section: s, level: 'critical', tip: `Your ${SECTION_LABELS[s]} accuracy is ${Math.round(pct)}%. Focus on foundational concepts — review the study guide and work untimed drills until you reach 70%.` });
+    } else if (pct < 75) {
+      tips.push({ section: s, level: 'improve', tip: `Your ${SECTION_LABELS[s]} accuracy is ${Math.round(pct)}%. You're building a foundation. Focus on understanding WHY wrong answers are wrong on every missed question.` });
+    } else if (pct < 88) {
+      tips.push({ section: s, level: 'good', tip: `${SECTION_LABELS[s]} at ${Math.round(pct)}% — solid progress. Now work on speed without sacrificing accuracy. Time yourself per-question.` });
+    } else {
+      tips.push({ section: s, level: 'excellent', tip: `${SECTION_LABELS[s]} at ${Math.round(pct)}% — excellent! Maintain this under timed conditions. Focus your remaining energy on weaker sections.` });
+    }
+  });
+
+  if (tips.length === 0) {
+    content.innerHTML = '<p style="font-size:.875rem;color:var(--text-muted);">Complete some practice to get personalized recommendations.</p>';
+    return;
+  }
+
+  const levelColors = { critical: '#ef4444', improve: 'var(--rc)', good: 'var(--lr)', excellent: 'var(--lg)' };
+  const levelLabels = { critical: 'Needs Work', improve: 'Improving', good: 'Good', excellent: 'Strong' };
+
+  content.innerHTML = tips.map(t => `
+    <div style="display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.75rem;padding:.75rem;background:#f8fafc;border-radius:8px;border-left:3px solid ${levelColors[t.level]}">
+      <span style="font-size:.72rem;font-weight:700;padding:.2rem .55rem;border-radius:99px;background:${levelColors[t.level]}20;color:${levelColors[t.level]};white-space:nowrap;margin-top:.15rem;">${levelLabels[t.level]}</span>
+      <span style="font-size:.875rem;">${t.tip}</span>
+    </div>`).join('');
+}
+
+function renderTargetContext() {
+  const target = parseInt(localStorage.getItem('lsat_target') || '175');
+  document.getElementById('targetInput').value = target;
+  document.getElementById('targetContext').textContent = getScoreContext(target);
+}
+
+function saveTarget() {
+  const val = parseInt(document.getElementById('targetInput').value);
+  if (val < 120 || val > 180) {
+    alert('Please enter a score between 120 and 180.');
+    return;
+  }
+  localStorage.setItem('lsat_target', val.toString());
+  document.getElementById('targetContext').textContent = getScoreContext(val);
+  const saved = document.getElementById('targetSaved');
+  saved.style.display = 'block';
+  setTimeout(() => { saved.style.display = 'none'; }, 2000);
+}
+
+function clearHistory() {
+  if (!confirm('Clear all practice history? This cannot be undone.')) return;
+  localStorage.removeItem('lsat_history');
+  localStorage.removeItem('lsat_accuracy');
+  localStorage.removeItem('lsat_total');
+  location.reload();
+}
+
+// ── Init ───────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const acc = JSON.parse(localStorage.getItem('lsat_accuracy') || '{}');
+  const total = parseInt(localStorage.getItem('lsat_total') || '0');
+
+  document.getElementById('totalDone').textContent = total;
+
+  const sections = ['lr', 'lg', 'rc'];
+  sections.forEach(s => {
+    const el = document.getElementById(`${s}Pct`);
+    if (acc[s] && acc[s].total > 0) {
+      const pct = Math.round((acc[s].correct / acc[s].total) * 100);
+      el.textContent = pct + '%';
+    }
+  });
+
+  renderAccuracyChart(acc);
+  renderScoreEstimate(acc);
+  renderHistory();
+  renderTips(acc);
+  renderTargetContext();
+});
