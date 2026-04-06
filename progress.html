@@ -27,7 +27,7 @@
     <p class="page-subtitle">Track your performance across all sections and identify areas to improve.</p>
 
     <!-- Overview Stats -->
-    <div class="stats-row" style="margin-bottom:1.5rem;">
+    <div class="stats-row" style="margin-bottom:1.5rem;grid-template-columns:repeat(3,1fr);">
       <div class="stat-card">
         <div class="stat-icon total-color">∑</div>
         <div>
@@ -40,13 +40,6 @@
         <div>
           <div class="stat-number" id="lrPct">—</div>
           <div class="stat-label">LR Accuracy</div>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon lg-color">LG</div>
-        <div>
-          <div class="stat-number" id="lgPct">—</div>
-          <div class="stat-label">LG Accuracy</div>
         </div>
       </div>
       <div class="stat-card">
@@ -75,6 +68,14 @@
       <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem;">
         Note: This estimate is based on your practice accuracy only. Official PrepTests under timed conditions are the best predictor of your actual score.
       </p>
+    </div>
+
+    <!-- Per-type accuracy -->
+    <div class="chart-card">
+      <h3>Accuracy by Question Type</h3>
+      <div id="typeAccuracyChart">
+        <div style="color:var(--text-muted);font-size:.875rem;">Answer some practice questions to see per-type accuracy here.</div>
+      </div>
     </div>
 
     <!-- Session History -->
