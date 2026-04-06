@@ -71,6 +71,50 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
+  // ── Per-type score badges (LR + RC study pages) ──
+  const typeAcc = JSON.parse(localStorage.getItem('lsat_type_accuracy') || '{}');
+  if (Object.keys(typeAcc).length > 0) {
+    // LR page: inject into .qtype-header after .qtype-name
+    document.querySelectorAll('.qtype-header').forEach(header => {
+      const nameEl = header.querySelector('.qtype-name');
+      if (!nameEl) return;
+      const type = nameEl.textContent.trim();
+      const data = typeAcc[type];
+      if (!data || data.total === 0) return;
+      injectTypeBadge(header, data);
+    });
+
+    // RC page: inject into rules-table rows where first cell has <strong>
+    document.querySelectorAll('.rules-table tbody tr').forEach(row => {
+      const first = row.querySelector('td strong');
+      if (!first) return;
+      const type = first.textContent.trim();
+      const data = typeAcc[type];
+      if (!data || data.total === 0) return;
+      const td = first.closest('td');
+      if (td) injectTypeBadge(td, data);
+    });
+  }
+
+  function injectTypeBadge(el, data) {
+    if (el.querySelector('.type-score-badge')) return; // already injected
+    const pct = Math.round((data.correct / data.total) * 100);
+    const bg   = pct >= 80 ? '#dcfce7' : pct >= 60 ? '#fef9c3' : '#fee2e2';
+    const color = pct >= 80 ? '#166534' : pct >= 60 ? '#854d0e' : '#991b1b';
+    const badge = document.createElement('span');
+    badge.className = 'type-score-badge';
+    badge.title = `${data.correct} correct out of ${data.total} attempted`;
+    badge.style.cssText = `
+      display:inline-flex;align-items:center;gap:.25rem;
+      font-size:.7rem;font-weight:700;padding:.2rem .55rem;
+      border-radius:99px;margin-left:.5rem;
+      background:${bg};color:${color};
+      vertical-align:middle;white-space:nowrap;cursor:default;
+    `;
+    badge.innerHTML = `${pct}% <span style="font-weight:400;opacity:.75;">${data.correct}/${data.total}</span>`;
+    el.appendChild(badge);
+  }
+
   // ── Active nav link ───────────────────────
   const path = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-links a').forEach(a => {

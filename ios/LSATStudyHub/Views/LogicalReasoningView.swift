@@ -181,8 +181,12 @@ private struct TermRow: View {
 
 private struct QuestionTypeRow: View {
     let type: LRQuestionType
+    @EnvironmentObject var progress: StudyProgress
     @State private var expanded = false
+
     var body: some View {
+        let typeResult = progress.typeStats[type.name]
+
         VStack(alignment: .leading, spacing: 6) {
             Button(action: { withAnimation(.easeInOut(duration: 0.2)) { expanded.toggle() }}) {
                 HStack {
@@ -192,6 +196,9 @@ private struct QuestionTypeRow: View {
                             Text(type.frequency).font(.caption).padding(.horizontal, 7).padding(.vertical, 2)
                                 .background(Color.indigo.opacity(0.12), in: Capsule())
                                 .foregroundStyle(.indigo)
+                            if let r = typeResult, r.total > 0 {
+                                TypeScorePill(result: r)
+                            }
                         }
                         Text(type.description).font(.caption).foregroundStyle(.secondary)
                     }
@@ -249,5 +256,35 @@ private struct ConditionalRow: View {
         }
         .padding(.vertical, 4)
         Divider()
+    }
+}
+
+// MARK: - Shared type score pill (used in LR and RC views)
+
+struct TypeScorePill: View {
+    let result: TypeResult
+
+    private var color: Color {
+        switch result.accuracyPct {
+        case 80...: return .green
+        case 60..<80: return .orange
+        default: return .red
+        }
+    }
+
+    private var indicator: String {
+        result.accuracyPct >= 90 ? "⭐" : result.accuracyPct < 50 ? "⚠" : ""
+    }
+
+    var body: some View {
+        HStack(spacing: 3) {
+            if !indicator.isEmpty { Text(indicator).font(.system(size: 9)) }
+            Text("\(result.accuracyPct)%").font(.system(size: 10, weight: .bold))
+            Text("\(result.correct)/\(result.total)")
+                .font(.system(size: 9)).opacity(0.75)
+        }
+        .padding(.horizontal, 7).padding(.vertical, 3)
+        .background(color.opacity(0.13), in: Capsule())
+        .foregroundStyle(color)
     }
 }

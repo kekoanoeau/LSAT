@@ -200,8 +200,63 @@ function clearHistory() {
   if (!confirm('Clear all practice history? This cannot be undone.')) return;
   localStorage.removeItem('lsat_history');
   localStorage.removeItem('lsat_accuracy');
+  localStorage.removeItem('lsat_type_accuracy');
   localStorage.removeItem('lsat_total');
   location.reload();
+}
+
+// ── Per-type accuracy chart ────────────────
+function renderTypeAccuracyChart() {
+  const typeAcc = JSON.parse(localStorage.getItem('lsat_type_accuracy') || '{}');
+  const container = document.getElementById('typeAccuracyChart');
+  if (!container) return;
+
+  const entries = Object.entries(typeAcc)
+    .filter(([, d]) => d.total > 0)
+    .sort((a, b) => (b[1].correct / b[1].total) - (a[1].correct / a[1].total));
+
+  if (entries.length === 0) return;
+
+  // Group by section using known type names
+  const lrTypes = new Set(['Assumption','Weaken','Strengthen','Flaw','Inference','Main Conclusion',
+    'Parallel Reasoning','Principle (Apply)','Point at Issue / Agree','Role of Statement',
+    'Sufficient Assumption','Resolve the Paradox','Inference / Must Be True']);
+  const rcTypes = new Set(['Main Point','Author\'s Attitude','Detail / Specific Information',
+    'Inference','Organization / Structure','Function of Paragraph / Phrase',
+    'Analogy / Parallel Structure','Comparative (Passage A vs. B)','Strengthen / Weaken the Argument',
+    'Main Point / Primary Purpose', 'Author\'s Attitude / Tone']);
+
+  const lr = entries.filter(([t]) => lrTypes.has(t));
+  const rc = entries.filter(([t]) => rcTypes.has(t));
+  const other = entries.filter(([t]) => !lrTypes.has(t) && !rcTypes.has(t));
+
+  function renderGroup(label, sectionColor, items) {
+    if (!items.length) return '';
+    const rows = items.map(([type, data]) => {
+      const pct = Math.round((data.correct / data.total) * 100);
+      const barColor = pct >= 80 ? 'var(--lg)' : pct >= 60 ? 'var(--rc)' : '#ef4444';
+      const star = pct >= 90 ? ' ⭐' : pct < 50 ? ' ⚠' : '';
+      return `<div class="bar-row">
+        <span class="bar-label" style="font-size:.8rem;">${type}${star}</span>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${pct}%;background:${barColor}"></div>
+        </div>
+        <span class="bar-pct" style="min-width:60px;font-size:.8rem;">
+          ${pct}%
+          <span style="font-size:.7rem;color:var(--text-muted);display:block;line-height:1;">${data.correct}/${data.total}</span>
+        </span>
+      </div>`;
+    }).join('');
+    return `<div style="margin-bottom:1.25rem;">
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:${sectionColor};margin-bottom:.6rem;">${label}</div>
+      <div class="bar-chart">${rows}</div>
+    </div>`;
+  }
+
+  container.innerHTML =
+    renderGroup('Logical Reasoning', 'var(--lr)', lr) +
+    renderGroup('Reading Comprehension', 'var(--rc)', rc) +
+    renderGroup('Other', 'var(--text-muted)', other);
 }
 
 // ── Init ───────────────────────────────────
@@ -223,6 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderAccuracyChart(acc);
   renderScoreEstimate(acc);
+  renderTypeAccuracyChart();
   renderHistory();
   renderTips(acc);
   renderTargetContext();

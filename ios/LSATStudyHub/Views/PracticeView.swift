@@ -476,6 +476,17 @@ private struct ResultsScreen: View {
 
     private func save() {
         guard !session.questions.isEmpty else { return }
+
+        // Build per-type breakdown
+        var typeBreakdown: [String: TypeResult] = [:]
+        for q in session.questions {
+            guard let ans = session.answers[q.id], session.revealed.contains(q.id) else { continue }
+            var entry = typeBreakdown[q.type] ?? TypeResult(correct: 0, total: 0)
+            entry.total += 1
+            if ans == q.correct { entry.correct += 1 }
+            typeBreakdown[q.type] = entry
+        }
+
         let s = CompletedSession(
             id: UUID(),
             date: Date(),
@@ -483,7 +494,8 @@ private struct ResultsScreen: View {
             correct: session.correct,
             attempted: session.attempted,
             total: session.questions.count,
-            skipped: session.skipped
+            skipped: session.skipped,
+            typeBreakdown: typeBreakdown
         )
         progress.recordSession(s)
     }

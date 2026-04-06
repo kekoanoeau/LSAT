@@ -37,6 +37,29 @@ final class StudyProgress: ObservableObject {
         sessions.reduce(0) { $0 + $1.attempted }
     }
 
+    // MARK: Per-question-type stats (cumulative across all sessions)
+    var typeStats: [String: TypeResult] {
+        var stats: [String: TypeResult] = [:]
+        for s in sessions {
+            for (type, result) in s.typeBreakdown {
+                guard result.total > 0 else { continue }
+                var cur = stats[type] ?? TypeResult(correct: 0, total: 0)
+                cur.correct += result.correct
+                cur.total   += result.total
+                stats[type] = cur
+            }
+        }
+        return stats
+    }
+
+    // Sorted for display: lowest accuracy first (needs most work)
+    var typeStatsSorted: [(type: String, result: TypeResult)] {
+        typeStats
+            .map { (type: $0.key, result: $0.value) }
+            .filter { $0.result.total > 0 }
+            .sorted { $0.result.accuracy < $1.result.accuracy }
+    }
+
     // MARK: Estimated score
     // Aug 2024+ format: LR ~50 questions (~65%), RC ~27 questions (~35%). LG removed.
     var estimatedScore: Int? {

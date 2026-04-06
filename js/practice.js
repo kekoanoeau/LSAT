@@ -264,21 +264,23 @@ function finishSession(timedOut) {
     const ans = state.answers[q.id];
     const type = q.type;
     if (!byType[type]) byType[type] = { correct: 0, total: 0 };
-    byType[type].total++;
 
     if (ans === null || ans === undefined) {
       skipped++;
-    } else if (state.revealed[q.id] && ans === q.correct) {
-      correct++;
-      byType[type].correct++;
+    } else {
+      byType[type].total++;
+      if (state.revealed[q.id] && ans === q.correct) {
+        correct++;
+        byType[type].correct++;
+      }
     }
   });
 
   const attempted = total - skipped;
   const pct = attempted > 0 ? Math.round((correct / attempted) * 100) : 0;
 
-  // Save to localStorage
-  saveResult({ section: state.section, total, correct, skipped, pct, date: new Date().toISOString() });
+  // Save to localStorage (includes per-type breakdown)
+  saveResult({ section: state.section, total, correct, skipped, pct, byType, date: new Date().toISOString() });
 
   // Show results
   document.getElementById('practiceScreen').style.display = 'none';
@@ -296,19 +298,29 @@ function finishSession(timedOut) {
     <div class="breakdown-item"><div class="breakdown-num" style="color:var(--text-muted)">${skipped}</div><div class="breakdown-label">Skipped</div></div>
   `;
 
-  // By type
-  const typeRows = Object.entries(byType).map(([type, data]) => {
-    const p = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
-    return `<div class="bar-row">
-      <span class="bar-label">${type}</span>
-      <div class="bar-track"><div class="bar-fill" style="width:${p}%;background:var(--lr)"></div></div>
-      <span class="bar-pct">${p}%</span>
-    </div>`;
-  }).join('');
+  // By type — show this session + cumulative
+  const cumTypeAcc = JSON.parse(localStorage.getItem('lsat_type_accuracy') || '{}');
+  const typeRows = Object.entries(byType)
+    .filter(([, d]) => d.total > 0)
+    .map(([type, data]) => {
+      const sessionPct = Math.round((data.correct / data.total) * 100);
+      const cum = cumTypeAcc[type];
+      const cumPct = cum && cum.total > 0 ? Math.round((cum.correct / cum.total) * 100) : null;
+      const barColor = sessionPct >= 80 ? 'var(--lg)' : sessionPct >= 60 ? 'var(--rc)' : '#ef4444';
+      const cumBadge = cumPct !== null
+        ? `<span style="font-size:.7rem;color:var(--text-muted);margin-left:.5rem;">all-time: ${cumPct}%</span>`
+        : '';
+      return `<div class="bar-row">
+        <span class="bar-label">${type}</span>
+        <div class="bar-track"><div class="bar-fill" style="width:${sessionPct}%;background:${barColor}"></div></div>
+        <span class="bar-pct">${sessionPct}%${cumBadge}</span>
+      </div>`;
+    }).join('');
 
-  document.getElementById('resultsByType').innerHTML = `
-    <div style="font-size:.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.75rem;">Accuracy by Type</div>
-    <div class="bar-chart">${typeRows}</div>`;
+  document.getElementById('resultsByType').innerHTML = typeRows
+    ? `<div style="font-size:.8rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.75rem;">This Session — By Type</div>
+       <div class="bar-chart">${typeRows}</div>`
+    : '';
 }
 
 function restartPractice() {
@@ -330,6 +342,18 @@ function saveResult(result) {
   acc[section].correct += result.correct;
   acc[section].total += (result.total - result.skipped);
   localStorage.setItem('lsat_accuracy', JSON.stringify(acc));
+
+  // Update per-question-type accuracy
+  if (result.byType) {
+    const typeAcc = JSON.parse(localStorage.getItem('lsat_type_accuracy') || '{}');
+    Object.entries(result.byType).forEach(([type, data]) => {
+      if (data.total === 0) return;
+      if (!typeAcc[type]) typeAcc[type] = { correct: 0, total: 0 };
+      typeAcc[type].correct += data.correct;
+      typeAcc[type].total += data.total;
+    });
+    localStorage.setItem('lsat_type_accuracy', JSON.stringify(typeAcc));
+  }
 
   // Total questions done
   const done = parseInt(localStorage.getItem('lsat_total') || '0') + (result.total - result.skipped);

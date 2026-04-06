@@ -185,12 +185,21 @@ private struct AnnotationRow: View {
 
 private struct RCQuestionRow: View {
     let type: RCQuestionType
+    @EnvironmentObject var progress: StudyProgress
     @State private var expanded = false
+
     var body: some View {
+        let typeResult = progress.typeStats[type.name]
+
         VStack(alignment: .leading, spacing: 4) {
             Button(action: { withAnimation(.easeInOut(duration: 0.2)) { expanded.toggle() }}) {
                 HStack {
-                    Text(type.name).font(.caption).bold()
+                    HStack(spacing: 6) {
+                        Text(type.name).font(.caption).bold()
+                        if let r = typeResult, r.total > 0 {
+                            TypeScorePill(result: r)
+                        }
+                    }
                     Spacer()
                     Image(systemName: expanded ? "chevron.up" : "chevron.down").font(.caption).foregroundStyle(.secondary)
                 }

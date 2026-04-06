@@ -52,6 +52,24 @@ struct Question: Identifiable, Codable {
     }
 }
 
+// MARK: - Type Result
+
+struct TypeResult: Codable, Equatable {
+    var correct: Int
+    var total: Int
+
+    var accuracy: Double { total > 0 ? Double(correct) / Double(total) : 0 }
+    var accuracyPct: Int { Int(accuracy * 100) }
+
+    var color: String {
+        switch accuracyPct {
+        case 80...: return "green"
+        case 60..<80: return "orange"
+        default: return "red"
+        }
+    }
+}
+
 // MARK: - Completed Session
 
 struct CompletedSession: Codable, Identifiable {
@@ -62,12 +80,35 @@ struct CompletedSession: Codable, Identifiable {
     let attempted: Int   // excludes skipped
     let total: Int
     let skipped: Int
+    var typeBreakdown: [String: TypeResult]
 
     var accuracy: Double {
         attempted > 0 ? Double(correct) / Double(attempted) : 0
     }
 
     var accuracyPct: Int { Int(accuracy * 100) }
+
+    // Backward-compatible init (typeBreakdown defaults to empty)
+    init(id: UUID, date: Date, section: String, correct: Int, attempted: Int,
+         total: Int, skipped: Int, typeBreakdown: [String: TypeResult] = [:]) {
+        self.id = id; self.date = date; self.section = section
+        self.correct = correct; self.attempted = attempted
+        self.total = total; self.skipped = skipped
+        self.typeBreakdown = typeBreakdown
+    }
+
+    // Custom decoder so old sessions without typeBreakdown still load
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        id          = try c.decode(UUID.self,   forKey: .id)
+        date        = try c.decode(Date.self,   forKey: .date)
+        section     = try c.decode(String.self, forKey: .section)
+        correct     = try c.decode(Int.self,    forKey: .correct)
+        attempted   = try c.decode(Int.self,    forKey: .attempted)
+        total       = try c.decode(Int.self,    forKey: .total)
+        skipped     = try c.decode(Int.self,    forKey: .skipped)
+        typeBreakdown = (try? c.decode([String: TypeResult].self, forKey: .typeBreakdown)) ?? [:]
+    }
 }
 
 // MARK: - Practice Mode

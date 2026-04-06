@@ -58,6 +58,12 @@ struct ProgressDashboardView: View {
                     }
                 } header: { Text("Target Score") }
 
+                // Per-type accuracy
+                Section {
+                    TypeAccuracyView(progress: progress)
+                } header: { Text("Accuracy by Question Type") }
+                  footer: { Text("⭐ = 90%+  ·  ⚠ = below 50%. Sorted by accuracy — weakest first.").font(.caption2) }
+
                 // Tips
                 if !progress.sessions.isEmpty {
                     Section {
@@ -218,6 +224,64 @@ private struct SessionRow: View {
     }
     private var sectionName: String {
         Question.SectionType(rawValue: session.section)?.displayName ?? session.section.uppercased()
+    }
+}
+
+// MARK: - Type Accuracy View
+
+private struct TypeAccuracyView: View {
+    let progress: StudyProgress
+
+    var body: some View {
+        let sorted = progress.typeStatsSorted
+        if sorted.isEmpty {
+            Text("Answer some practice questions to see per-type accuracy here.")
+                .font(.caption).foregroundStyle(.secondary).padding(.vertical, 4)
+        } else {
+            VStack(spacing: 10) {
+                ForEach(sorted, id: \.type) { item in
+                    TypeAccuracyRow(type: item.type, result: item.result)
+                }
+            }
+        }
+    }
+}
+
+private struct TypeAccuracyRow: View {
+    let type: String
+    let result: TypeResult
+
+    private var barColor: Color {
+        switch result.accuracyPct {
+        case 80...: return .green
+        case 60..<80: return .orange
+        default: return .red
+        }
+    }
+
+    private var indicator: String {
+        result.accuracyPct >= 90 ? " ⭐" : result.accuracyPct < 50 ? " ⚠" : ""
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text("\(type)\(indicator)").font(.caption).fontWeight(.medium)
+                Spacer()
+                Text("\(result.accuracyPct)%")
+                    .font(.caption).bold().foregroundStyle(barColor)
+                Text("(\(result.correct)/\(result.total))")
+                    .font(.caption2).foregroundStyle(.secondary)
+            }
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Capsule().fill(Color(.systemGroupedBackground)).frame(height: 8)
+                    Capsule().fill(barColor)
+                        .frame(width: geo.size.width * CGFloat(result.accuracy), height: 8)
+                }
+            }
+            .frame(height: 8)
+        }
     }
 }
 
