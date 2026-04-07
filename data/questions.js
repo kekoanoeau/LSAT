@@ -1,4 +1,4 @@
-// LSAT Study Hub — Question Bank
+// EddieHub 💪 — Question Bank
 // Questions are modeled after official LSAT question types.
 // These are original study examples — not from official PrepTests.
 
