@@ -1,5 +1,5 @@
 // =============================================
-// LSAT Study Hub — Practice Engine
+// EddieHub 💪 — Practice Engine
 // =============================================
 
 // ── State ──────────────────────────────────
@@ -289,7 +289,7 @@ function finishSession(timedOut) {
   document.getElementById('resultsScore').textContent = `${correct}/${attempted}`;
   document.getElementById('resultsLabel').textContent = `${pct}% Correct${timedOut ? ' (Time Ran Out)' : ''}`;
 
-  const emoji = pct >= 80 ? '🎉' : pct >= 60 ? '💪' : '📚';
+  const emoji = pct >= 80 ? '🏆' : pct >= 60 ? '💪' : '🏋️';
   document.getElementById('resultsEmoji').textContent = emoji;
 
   document.getElementById('resultsBreakdown').innerHTML = `

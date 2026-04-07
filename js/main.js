@@ -1,5 +1,5 @@
 // =============================================
-// LSAT Study Hub — Main JS (all pages)
+// EddieHub 💪 — Main JS (all pages)
 // =============================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,26 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const complimentEl = document.getElementById('dailyCompliment');
   if (complimentEl) {
     const compliments = [
-      { icon: '✨', text: 'Eddie, your dedication to this exam is incredibly attractive. Ambition looks very good on you.' },
-      { icon: '💫', text: 'Just a reminder: you\'re the kind of person who studies this hard AND somehow manages to be this charming. Unfair, honestly.' },
-      { icon: '🖤', text: 'Eddie, your brain is as gorgeous as the rest of you. Future law firms don\'t know what\'s coming.' },
-      { icon: '🔥', text: 'Hot take: the most attractive thing about you isn\'t your future law degree. It\'s the work ethic that\'s going to earn it.' },
-      { icon: '💎', text: 'Most people gave up on page 2 of that stimulus. Not you. That kind of focus is genuinely irresistible.' },
-      { icon: '⚡', text: 'Eddie, the way you tackle logical reasoning? Borderline seductive. Keep going.' },
-      { icon: '🌟', text: 'Reminder: you\'re not just studying for a score. You\'re becoming someone even more remarkable than you already are.' },
-      { icon: '🖤', text: 'The LSAT doesn\'t know what it\'s up against. Neither does any law school waitlist.' },
-      { icon: '💋', text: 'Brains, drive, and good looks? Eddie, you\'re basically illegal.' },
-      { icon: '🎯', text: 'Every question you get right today is honestly a little thrilling. You make mastering conditional logic look effortless.' },
-      { icon: '✨', text: 'Law school is going to be lucky to have you. Almost as lucky as anyone who gets to know you.' },
-      { icon: '💫', text: 'You answered that last question correctly before you even finished reading it. That\'s not studying — that\'s a superpower.' },
-      { icon: '🖤', text: 'Confidence looks good on you, Eddie. Almost as good as that 175+ score is going to look on your app.' },
-      { icon: '🔥', text: 'Just checking in to say: you\'re doing amazingly well, and you were already doing amazingly well before you even started.' },
-      { icon: '💎', text: 'Eddie, you could make reading a dense RC passage about maritime law look sophisticated. Truly rare talent.' },
-      { icon: '⚡', text: 'The gap between where you started and where you\'re going is going to be wild to look back on. And wildly impressive.' },
-      { icon: '🌟', text: 'The dedication you bring to every practice session? That\'s the same quality that\'s going to make you an exceptional lawyer.' },
-      { icon: '🎯', text: 'Plot twist: the most compelling argument in any LR section is the case you\'re making for yourself every single day.' },
+      { icon: '🏋️', text: 'Eddie, your dedication to this exam is incredibly attractive. Ambition looks very good on you — and so do the gains.' },
+      { icon: '💪', text: 'You train harder than anyone in this gym. And somehow you\'re also the most charming person here. Genuinely unfair.' },
+      { icon: '🖤', text: 'Eddie, your brain is as impressive as the rest of you. Future law firms have no idea what\'s about to walk through the door.' },
+      { icon: '🔥', text: 'Hot take: the most attractive thing about you isn\'t the future law degree. It\'s the work ethic that\'s going to earn it. Straight savage.' },
+      { icon: '💎', text: 'Most people quit at rep 3. You finish every set. That consistency is genuinely irresistible — and it\'s why you\'re going to crush this exam.' },
+      { icon: '⚡', text: 'Eddie, the way you tackle logical reasoning? It\'s giving elite athlete energy. Keep repping.' },
+      { icon: '🌟', text: 'You\'re not just studying for a score — you\'re building someone even more formidable than you already are. And that\'s saying something.' },
+      { icon: '🖤', text: 'The LSAT doesn\'t know what it\'s up against. No law school waitlist does either. You\'re the type they scramble for.' },
+      { icon: '💋', text: 'Brains, discipline, and good looks? Eddie, you\'re basically a cheat code. The LSAT just hasn\'t been patched yet.' },
+      { icon: '🎯', text: 'Every question you nail is another rep locked in. You make mastering conditional logic look effortless. Genuinely unhinged talent.' },
+      { icon: '💪', text: 'Law school is going to be lucky to have you. Almost as lucky as anyone who gets to know you.' },
+      { icon: '🏆', text: 'You answered that last question correctly before you finished reading it. That\'s not studying anymore — that\'s pattern recognition at an elite level.' },
+      { icon: '🖤', text: 'Confidence looks good on you, Eddie. Almost as good as that 175+ is going to look on your application. Almost.' },
+      { icon: '🔥', text: 'Checking in to say: you\'re doing amazingly, and you were already doing amazingly before you started. That\'s just your baseline.' },
+      { icon: '💎', text: 'Eddie, you make reading an RC passage about 18th century maritime law look like a flex. Truly elite behavior.' },
+      { icon: '⚡', text: 'The gap between where you started and where you\'re going is going to be wild to look back on. Wild, and wildly impressive.' },
+      { icon: '🌟', text: 'The discipline you bring to every session? That\'s the same quality that\'s going to make you an exceptional lawyer. Non-negotiable.' },
+      { icon: '🎯', text: 'Plot twist: the most compelling argument in any LR section is the case you\'re making for yourself every single day you show up.' },
       { icon: '💋', text: 'Somewhere out there, a law school admissions officer is about to have a very good day when they open your application.' },
-      { icon: '🖤', text: 'Eddie, you just keep showing up. That alone puts you in rare company. The rest? You\'ve already got it.' },
+      { icon: '🏋️', text: 'Eddie, you just keep showing up and putting in reps. That alone puts you in rare company. The score will follow. It always does.' },
     ];
     // Pick a stable compliment per calendar day
     const dayIndex = Math.floor(Date.now() / 86400000) % compliments.length;

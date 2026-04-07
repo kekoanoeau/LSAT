@@ -16,7 +16,7 @@ struct DashboardView: View {
                 }
                 .padding()
             }
-            .navigationTitle("LSAT Study Hub")
+            .navigationTitle("EddieHub 💪")
             .navigationBarTitleDisplayMode(.large)
         }
     }
@@ -24,26 +24,26 @@ struct DashboardView: View {
     // MARK: Daily Compliment
     private var dailyComplimentCard: some View {
         let compliments: [(icon: String, text: String)] = [
-            ("✨", "Eddie, your dedication to this exam is incredibly attractive. Ambition looks very good on you."),
-            ("💫", "You're the kind of person who studies this hard AND somehow manages to be this charming. Unfair, honestly."),
-            ("🖤", "Eddie, your brain is as gorgeous as the rest of you. Future law firms don't know what's coming."),
-            ("🔥", "The most attractive thing about you isn't your future law degree. It's the work ethic earning it."),
-            ("💎", "Most people gave up on page 2 of that stimulus. Not you. That kind of focus is genuinely irresistible."),
-            ("⚡", "Eddie, the way you tackle logical reasoning? Borderline seductive. Keep going."),
-            ("🌟", "You're not just studying for a score. You're becoming someone even more remarkable than you already are."),
-            ("🖤", "The LSAT doesn't know what it's up against. Neither does any law school waitlist."),
-            ("💋", "Brains, drive, and good looks? Eddie, you're basically illegal."),
-            ("🎯", "Every question you get right today is honestly a little thrilling. You make this look effortless."),
-            ("✨", "Law school is going to be lucky to have you. Almost as lucky as anyone who gets to know you."),
-            ("💫", "You answered that last question correctly before you finished reading it. That's not studying — that's a superpower."),
-            ("🖤", "Confidence looks good on you, Eddie. Almost as good as that 175+ score will look on your application."),
-            ("🔥", "You're doing amazingly well, and you were already doing amazingly well before you even started."),
-            ("💎", "Eddie, you could make reading an RC passage about maritime law look sophisticated. Truly rare talent."),
-            ("⚡", "The gap between where you started and where you're going is going to be wild to look back on."),
-            ("🌟", "The dedication you bring to every session is the same quality that will make you an exceptional lawyer."),
-            ("🎯", "The most compelling argument in any LR section is the case you're making for yourself every single day."),
-            ("💋", "Somewhere out there, a law school admissions officer is about to have a very good day."),
-            ("🖤", "Eddie, you just keep showing up. That alone puts you in rare company. The rest? You've already got it."),
+            ("🏋️", "Eddie, your dedication to this exam is incredibly attractive. Ambition looks very good on you — and so do the gains."),
+            ("💪", "You train harder than anyone in this gym. And somehow you're also the most charming person here. Genuinely unfair."),
+            ("🖤", "Eddie, your brain is as impressive as the rest of you. Future law firms have no idea what's about to walk through the door."),
+            ("🔥", "The most attractive thing about you isn't the future law degree. It's the work ethic earning it. Straight savage."),
+            ("💎", "Most people quit at rep 3. You finish every set. That consistency is genuinely irresistible — and it's why you'll crush this exam."),
+            ("⚡", "Eddie, the way you tackle logical reasoning? It's giving elite athlete energy. Keep repping."),
+            ("🌟", "You're not just studying for a score — you're building someone even more formidable than you already are."),
+            ("🖤", "The LSAT doesn't know what it's up against. No law school waitlist does either. You're the type they scramble for."),
+            ("💋", "Brains, discipline, and good looks? Eddie, you're basically a cheat code. The LSAT just hasn't been patched yet."),
+            ("🎯", "Every question you nail is another rep locked in. You make mastering conditional logic look effortless."),
+            ("💪", "Law school is going to be lucky to have you. Almost as lucky as anyone who gets to know you."),
+            ("🏆", "You answered that last question correctly before you finished reading it. That's not studying — that's elite pattern recognition."),
+            ("🖤", "Confidence looks good on you, Eddie. Almost as good as that 175+ will look on your application. Almost."),
+            ("🔥", "You're doing amazingly, and you were already doing amazingly before you started. That's just your baseline."),
+            ("💎", "Eddie, you make reading an RC passage about 18th century maritime law look like a flex. Truly elite behavior."),
+            ("⚡", "The gap between where you started and where you're going is going to be wild to look back on. Wild, and wildly impressive."),
+            ("🌟", "The discipline you bring to every session is the same quality that will make you an exceptional lawyer. Non-negotiable."),
+            ("🎯", "The most compelling argument in any LR section is the case you're making for yourself every single day you show up."),
+            ("💋", "Somewhere out there, a law school admissions officer is about to have a very good day when they open your application."),
+            ("🏋️", "Eddie, you just keep showing up and putting in reps. That alone puts you in rare company. The score will follow. It always does."),
         ]
         let idx = Int(Date().timeIntervalSince1970 / 86400) % compliments.count
         let c = compliments[idx]
@@ -51,7 +51,7 @@ struct DashboardView: View {
         return HStack(spacing: 12) {
             Text(c.icon).font(.title2)
             VStack(alignment: .leading, spacing: 2) {
-                Text("Today's Note")
+                Text("Daily Pump-Up")
                     .font(.system(size: 9, weight: .bold))
                     .foregroundStyle(.white.opacity(0.6))
                     .textCase(.uppercase)
@@ -71,7 +71,7 @@ struct DashboardView: View {
     private var headerCard: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Welcome, Eddie")
+                Text("Back in the gym, Eddie 💪")
                     .font(.title2).bold()
                 Text(Date().formatted(date: .long, time: .omitted))
                     .font(.subheadline)
@@ -93,7 +93,7 @@ struct DashboardView: View {
         HStack(spacing: 12) {
             StatCard(label: "LR", value: progress.accuracyString(for: .lr), color: .indigo)
             StatCard(label: "RC", value: progress.accuracyString(for: .rc), color: .orange)
-            StatCard(label: "Done", value: "\(progress.totalAttempted)", color: .gray)
+            StatCard(label: "Reps", value: "\(progress.totalAttempted)", color: .gray)
         }
     }
 
@@ -116,8 +116,8 @@ struct DashboardView: View {
             NavigationLink(destination: LogicalReasoningView()) {
                 SectionCard(
                     title: "Logical Reasoning",
-                    subtitle: "~65% of exam · 2 scored sections",
-                    description: "The dominant section — two LR sections of 24–26 questions each. Master argument analysis, flaw identification, assumptions, and inferences.",
+                    subtitle: "~65% of exam · 2 scored sections · The Main Lift",
+                    description: "Your bench press — the core movement. Two LR sections of 24–26 questions each. Win here, win the exam.",
                     chips: ["Flaw", "Assumption", "Strengthen", "Inference"],
                     color: .indigo
                 )
@@ -127,8 +127,8 @@ struct DashboardView: View {
             NavigationLink(destination: ReadingCompView()) {
                 SectionCard(
                     title: "Reading Comprehension",
-                    subtitle: "~35% of exam · 1 scored section",
-                    description: "Active reading, passage mapping, and question-type strategies for dense academic texts.",
+                    subtitle: "~35% of exam · 1 scored section · Accessory Work",
+                    description: "The accessory lift that rounds out your score. One RC section with 4 passages (~27 questions). Build reading endurance.",
                     chips: ["Main Point", "Inference", "Author's Tone", "Comparative"],
                     color: .orange
                 )
@@ -137,9 +137,9 @@ struct DashboardView: View {
 
             NavigationLink(destination: LogicGamesView()) {
                 SectionCard(
-                    title: "Logic Games — Archive",
-                    subtitle: "Removed August 2024",
-                    description: "Analytical Reasoning was permanently eliminated from the LSAT. This guide is for historical reference only.",
+                    title: "Logic Games — Archive 📦",
+                    subtitle: "Decommissioned August 2024",
+                    description: "LSAC retired this exercise from the program. Guide preserved for historical reference only.",
                     chips: ["Removed", "Pre-Aug 2024"],
                     color: .gray
                 )
@@ -151,7 +151,7 @@ struct DashboardView: View {
     // MARK: Study Plan
     private var studyPlan: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Study Strategy").font(.headline)
+            Text("Training Program").font(.headline)
             HStack(spacing: 12) {
                 ForEach(Phase.allCases) { phase in
                     PhaseCard(phase: phase)
@@ -165,10 +165,10 @@ struct DashboardView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Approved Resources").font(.headline)
             VStack(spacing: 8) {
-                ResourceRow(name: "LSAC LawHub", detail: "Official PrepTests — the only real LSAT questions.", badge: "Official", badgeColor: .orange)
-                ResourceRow(name: "The LSAT Trainer", detail: "Mike Kim's book. Best third-party prep resource.", badge: "Top Pick", badgeColor: .indigo)
-                ResourceRow(name: "PowerScore Bibles", detail: "LR, LG, RC Bibles for comprehensive theory coverage.", badge: "Recommended", badgeColor: .indigo)
-                ResourceRow(name: "7Sage LSAT", detail: "Best-in-class Logic Games video curriculum.", badge: "Recommended", badgeColor: .indigo)
+                ResourceRow(name: "LSAC LawHub", detail: "Official PrepTests — the barbells of LSAT prep. No substitute.", badge: "Official", badgeColor: .orange)
+                ResourceRow(name: "The LSAT Trainer", detail: "Mike Kim's book. Best third-party coaching resource.", badge: "Top Pick", badgeColor: .indigo)
+                ResourceRow(name: "PowerScore Bibles", detail: "LR, LG, RC Bibles for athletes who want full theoretical depth.", badge: "Recommended", badgeColor: .indigo)
+                ResourceRow(name: "7Sage LSAT", detail: "Best video coaching for every PrepTest question.", badge: "Recommended", badgeColor: .indigo)
             }
         }
         .padding(.bottom, 8)
@@ -241,7 +241,7 @@ private enum Phase: Int, CaseIterable, Identifiable {
     case foundation = 1, building, simulation
     var id: Int { rawValue }
     var title: String {
-        switch self { case .foundation: return "Foundation"; case .building: return "Skill Building"; case .simulation: return "Test Sim" }
+        switch self { case .foundation: return "Base Training"; case .building: return "Prog. Overload"; case .simulation: return "Competition" }
     }
     var weeks: String {
         switch self { case .foundation: return "Wks 1–4"; case .building: return "Wks 5–8"; case .simulation: return "Wks 9–12" }

@@ -18,7 +18,7 @@ struct PracticeView: View {
                     ResultsScreen(session: session, progress: progress)
                 }
             }
-            .navigationTitle(session.phase == .selection ? "Practice" : "")
+            .navigationTitle(session.phase == .selection ? "Training Session 🏋️" : "")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
