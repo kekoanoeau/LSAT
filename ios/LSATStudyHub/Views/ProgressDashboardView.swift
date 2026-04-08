@@ -15,7 +15,7 @@ struct ProgressDashboardView: View {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                         ProgressStatCard(label: "LR Accuracy", value: progress.accuracyString(for: .lr), color: .primary)
                         ProgressStatCard(label: "RC Accuracy", value: progress.accuracyString(for: .rc), color: .orange)
-                        ProgressStatCard(label: "Questions Done", value: "\(progress.totalAttempted)", color: .purple)
+                        ProgressStatCard(label: "Total Reps", value: "\(progress.totalAttempted)", color: .purple)
                     }
                     .padding(.vertical, 4)
                     .listRowInsets(EdgeInsets())
@@ -68,20 +68,20 @@ struct ProgressDashboardView: View {
                 if !progress.sessions.isEmpty {
                     Section {
                         PersonalizedTipsView(progress: progress)
-                    } header: { Text("Personalized Tips") }
+                    } header: { Text("Coach's Corner 🎯") }
                 }
 
                 // History
                 Section {
                     if progress.sessions.isEmpty {
-                        Text("No sessions recorded yet. Start a practice session!")
+                        Text("No sessions logged yet. Hit the gym — your training history will appear here.")
                             .font(.subheadline).foregroundStyle(.secondary).padding(.vertical, 8)
                     } else {
                         ForEach(progress.sessions.prefix(20)) { s in
                             SessionRow(session: s)
                         }
                     }
-                } header: { Text("Recent Sessions") }
+                } header: { Text("Training Log") }
                   footer: {
                     if !progress.sessions.isEmpty {
                         Button("Clear History", role: .destructive) { showClearConfirm = true }
@@ -89,7 +89,7 @@ struct ProgressDashboardView: View {
                     }
                 }
             }
-            .navigationTitle("Progress")
+            .navigationTitle("Your Gains 📈")
             .onAppear { targetInput = Double(progress.targetScore) }
             .confirmationDialog("Clear all practice history?", isPresented: $showClearConfirm, titleVisibility: .visible) {
                 Button("Clear History", role: .destructive) { progress.clearHistory() }
@@ -185,13 +185,13 @@ private struct PersonalizedTipsView: View {
             let msg: String
             let color: Color
             if pct < 0.60 {
-                msg = "\(s.displayName) (\(Int(pct*100))%): Focus on foundational concepts — review the guide and drill untimed until you reach 70%.";  color = .red
+                msg = "\(s.displayName) (\(Int(pct*100))%): Deload and rebuild. Slow down, drill untimed fundamentals, and don't add weight until you're hitting 70%+ consistently."; color = .red
             } else if pct < 0.75 {
-                msg = "\(s.displayName) (\(Int(pct*100))%): Understand WHY every wrong answer is wrong on every miss."; color = .orange
+                msg = "\(s.displayName) (\(Int(pct*100))%): You're in the building phase. Debrief every miss — understand exactly WHY each wrong answer is wrong. That's your progressive overload."; color = .orange
             } else if pct < 0.88 {
-                msg = "\(s.displayName) (\(Int(pct*100))%): Good progress! Now time yourself per-question without sacrificing accuracy."; color = .indigo
+                msg = "\(s.displayName) (\(Int(pct*100))%): Solid work. Now add the clock — same reps, less rest. Time yourself per-question and refuse to let speed break your form."; color = .indigo
             } else {
-                msg = "\(s.displayName) (\(Int(pct*100))%): Excellent! Maintain this under timed, test-day conditions."; color = .green
+                msg = "\(s.displayName) (\(Int(pct*100))%): Elite performance. Maintain this under timed, test-day conditions. Your engine is built — shift energy to weaker sections."; color = .green
             }
             result.append(TipItem(section: s.rawValue, color: color, message: msg))
         }

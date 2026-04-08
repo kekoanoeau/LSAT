@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logical Reasoning — LSAT Study Hub</title>
+  <title>Logical Reasoning — EddieHub 💪</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-brand">
-      <span class="brand-icon">⚖</span>
-      <span>LSAT Study Hub</span>
+      <span class="brand-icon">🏋️</span>
+      <span>EddieHub 💪</span>
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Dashboard</a></li>
       <li><a href="logical-reasoning.html" class="active">Logical Reasoning</a></li>
       <li><a href="logic-games.html">Logic Games</a></li>
       <li><a href="reading-comp.html">Reading Comp</a></li>
-      <li><a href="practice.html">Practice</a></li>
-      <li><a href="progress.html">Progress</a></li>
+      <li><a href="practice.html">Train</a></li>
+      <li><a href="progress.html">Gains</a></li>
     </ul>
   </nav>
 
@@ -33,16 +33,47 @@
       LR now makes up ~65% of your LSAT score. Two scored sections of 24–26 questions each (~50 total LR questions). This is the section where your score is won or lost.
     </p>
 
+    <!-- LSAT Demon Philosophy Banner -->
+    <div style="background:#0a0a0a;border-radius:var(--radius);padding:1.1rem 1.3rem;margin-bottom:1.5rem;color:#fff;">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.4rem;">The LSAT Demon Way · lsatdemon.com</div>
+      <div style="font-size:1rem;font-weight:700;margin-bottom:.5rem;">"Slow down to speed up. This is The Way."</div>
+      <div style="font-size:.85rem;color:rgba(255,255,255,.8);line-height:1.6;">
+        Nathan Fox (179/180) and Ben Olson's LSAT Demon platform argues the LSAT is fundamentally <em>easy</em> — if you stop using gimmicks and start thinking clearly. No diagramming, no memorized attack patterns, no negation test. Just genuine understanding, one question at a time.
+      </div>
+    </div>
+
     <!-- Core Approach -->
-    <section class="strategy-card" style="border-left-color: var(--lr); margin-bottom: 2rem;">
-      <h3>The LR Method (Apply to Every Question)</h3>
+    <section class="strategy-card" style="border-left-color: var(--lr); margin-bottom: 1.5rem;">
+      <h3>The LR Process (Every Question, Every Time)</h3>
       <ol style="padding-left:1.2rem; margin-top:.5rem;">
-        <li style="margin-bottom:.4rem;"><strong>Identify the question type</strong> from the stem before reading the stimulus.</li>
-        <li style="margin-bottom:.4rem;"><strong>Read the stimulus actively</strong> — tag conclusion, premises, and assumptions.</li>
-        <li style="margin-bottom:.4rem;"><strong>Pre-phrase an answer</strong> before looking at the choices.</li>
-        <li style="margin-bottom:.4rem;"><strong>Eliminate aggressively</strong> — 4 answers are wrong for specific reasons.</li>
-        <li><strong>Pick the best answer</strong>, not a perfect one.</li>
+        <li style="margin-bottom:.4rem;"><strong>Read the stimulus slowly.</strong> Never skip a word. Find the conclusion and premises before you reach the question stem.</li>
+        <li style="margin-bottom:.4rem;"><strong>Attack the argument.</strong> Accept the premises as true — but poke holes in the conclusion. Where's the gap? What's the flaw?</li>
+        <li style="margin-bottom:.4rem;"><strong>Read the question stem</strong> to confirm what's being asked (and which category: Passage-Driven or Answer-Driven — see below).</li>
+        <li style="margin-bottom:.4rem;"><strong>Predict before you look.</strong> Cover the answer choices. What would the right answer look like? Form your own answer first.</li>
+        <li style="margin-bottom:.4rem;"><strong>Eliminate aggressively</strong> — all four wrong answers are wrong for specific reasons. Find those reasons.</li>
+        <li><strong>Pick the best answer.</strong> Boring, conservative, vague answers are usually safer than specific or strongly-worded ones.</li>
       </ol>
+    </section>
+
+    <!-- Passage-Driven vs Answer-Driven -->
+    <section style="margin-bottom:2rem;">
+      <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:.75rem;">The Two Categories of LR Questions <span style="font-size:.8rem;font-weight:500;color:var(--text-muted);">— LSAT Demon Framework</span></h2>
+      <p style="font-size:.875rem;color:var(--text-muted);margin-bottom:1rem;">Every LR question falls into one of two categories. Knowing which you're in tells you how to treat the answer choices.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+        <div style="border:2px solid var(--lr);border-radius:var(--radius);padding:1rem;">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--lr);margin-bottom:.4rem;">Passage-Driven · "Closed Record"</div>
+          <p style="font-size:.875rem;margin-bottom:.6rem;">Treat the passage as the complete universe of facts. The correct answer is <strong>already supported by what's written</strong> — no new information enters.</p>
+          <div style="font-size:.8rem;color:var(--text-muted);"><strong>Question types:</strong> Conclusion, Must Be True / Supported, Necessary Assumption, Flaw, Role, Method of Reasoning, Parallel, Parallel Flaw, Point at Issue / Disagree</div>
+        </div>
+        <div style="border:2px solid var(--rc);border-radius:var(--radius);padding:1rem;">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--rc);margin-bottom:.4rem;">Answer-Driven · "Open Record"</div>
+          <p style="font-size:.875rem;margin-bottom:.6rem;">Each answer choice is a <strong>new piece of information</strong> you treat as true. Ask which new fact best helps (or hurts) the argument.</p>
+          <div style="font-size:.8rem;color:var(--text-muted);"><strong>Question types:</strong> Strengthen, Weaken, Sufficient Assumption, Evaluate, Paradox / Resolve</div>
+        </div>
+      </div>
+      <div style="background:#f8f8f8;border-radius:var(--radius);padding:.85rem 1rem;font-size:.82rem;color:var(--text-muted);">
+        <strong>The Flaw Family:</strong> Flaw, Necessary Assumption, Strengthen, and Weaken are all interconnected — they all require you to <em>attack the argument</em> and identify its logical vulnerability first. Master flaw identification and these four question types become much easier.
+      </div>
     </section>
 
     <!-- Argument Anatomy -->
@@ -52,18 +83,22 @@
         <div class="resource-card">
           <h3>Conclusion</h3>
           <p>The main point the author is trying to prove. Look for: <em>therefore, thus, hence, so, clearly, it follows that, this shows that.</em></p>
+          <p style="font-size:.8rem;color:var(--text-muted);margin-top:.4rem;">Demon tip: The conclusion may be a full sentence or just part of one. Always know what the author is trying to <em>prove</em>, not just what they say.</p>
         </div>
         <div class="resource-card">
           <h3>Premise</h3>
           <p>Evidence used to support the conclusion. Look for: <em>because, since, given that, for, as, in light of, the fact that.</em></p>
+          <p style="font-size:.8rem;color:var(--text-muted);margin-top:.4rem;">Demon tip: Accept all premises as true. Your job is never to question the facts — only the <em>conclusion drawn from them</em>.</p>
         </div>
         <div class="resource-card">
-          <h3>Assumption</h3>
-          <p>An unstated premise the argument requires to be valid. The gap between premises and conclusion. Critical to most LR questions.</p>
+          <h3>Intermediate Conclusion</h3>
+          <p>A claim that is supported by premises <em>and</em> also supports the main conclusion. Acts as a bridge — it's both a conclusion (proven) and a premise (used to prove more).</p>
+          <p style="font-size:.8rem;color:var(--text-muted);margin-top:.4rem;">Spot it: can you say "So… because…" around it?</p>
         </div>
         <div class="resource-card">
-          <h3>Flaw</h3>
-          <p>The logical error in the argument. The LSAT uses a finite set of recurring flaws — learn them all by name.</p>
+          <h3>Assumption / Gap</h3>
+          <p>The unstated link between premises and conclusion — what the argument silently depends on. The gap is where the argument is vulnerable.</p>
+          <p style="font-size:.8rem;color:var(--text-muted);margin-top:.4rem;">Demon tip: Attack the argument here. The gap is the target for Flaw, Weaken, Strengthen, and Assumption questions.</p>
         </div>
       </div>
     </section>
@@ -86,8 +121,8 @@
           </ul>
         </div>
         <div class="strategy-box">
-          <strong>Strategy: Negation Test</strong>
-          Negate each answer choice. If the negation destroys the argument, that's the assumption. Works for necessary assumptions.
+          <strong>Strategy: Attack the Argument</strong>
+          Identify the gap between premises and conclusion. The correct answer is the one the argument <em>cannot function without</em> — it's the weakest link. LSAT Demon explicitly discourages the Negation Test: understand the gap directly rather than relying on a mechanical shortcut.
         </div>
       </div>
 
@@ -105,8 +140,8 @@
           </ul>
         </div>
         <div class="strategy-box">
-          <strong>Strategy: Fill the Gap</strong>
-          Find the assumption, then look for an answer that confirms or supports that assumption. New information is fine.
+          <strong>Strategy: Attack First, Then Match</strong>
+          Answer-Driven (Open Record): treat each choice as a new true fact. Attack the argument first — find the vulnerability. Then find the answer that directly addresses and supports that gap. New information is not only allowed, it's the point.
         </div>
       </div>
 
@@ -124,8 +159,8 @@
           </ul>
         </div>
         <div class="strategy-box">
-          <strong>Strategy: Attack the Assumption</strong>
-          Identify the gap. The correct answer will show the assumption is wrong or introduce a counter-cause/alternative explanation.
+          <strong>Strategy: Attack First, Then Undermine</strong>
+          Answer-Driven (Open Record): treat each choice as a new true fact. Attack the argument first — identify its vulnerable assumption. Then find the answer that hits that exact vulnerability: an alternative cause, a counter-example, or a fact that severs the premise-conclusion link.
         </div>
       </div>
 
@@ -143,8 +178,8 @@
           </ul>
         </div>
         <div class="strategy-box">
-          <strong>Common Flaws to Memorize</strong>
-          Causal flaw, ad hominem, circular reasoning, false dichotomy, equivocation, part-to-whole, composition/division, sampling error, appeal to authority.
+          <strong>Strategy: Name the Gap</strong>
+          Passage-Driven (Closed Record): after reading the argument, describe the flaw in your own plain English <em>before</em> reading the choices. "The author assumes correlation is causation." "The author ignores other explanations." Then match. Common flaws: causal, sampling, false dichotomy, scope shift, part-to-whole, circular reasoning, ad hominem.
         </div>
       </div>
 
@@ -163,7 +198,7 @@
         </div>
         <div class="strategy-box">
           <strong>Strategy: Stay in the Box</strong>
-          Only use information given. The correct answer follows directly from the stimulus — no outside facts. Low claim answers are safer.
+          Passage-Driven (Closed Record): 100% proven by the passage, either restated or derived by combining two or more facts. No outside information allowed. The Demon principle: boring, conservatively-stated, vague answers are usually safer than specific, loaded ones — they're easier to prove.
         </div>
       </div>
 
@@ -275,8 +310,8 @@
           </ul>
         </div>
         <div class="strategy-box">
-          <strong>Strategy: Conditional Logic</strong>
-          Often involves formal logic. Identify the logical gap and look for a conditional statement that bridges the conclusion to the premises. Contrapositive thinking is essential.
+          <strong>Strategy: Bridge the Gap Completely</strong>
+          Answer-Driven (Open Record): the correct answer must <em>guarantee</em> the conclusion follows — not just make it likely. Find the precise logical bridge. LSAT Demon: understand the connection in plain English rather than through arrow notation. These are highly predictable once you see the gap clearly.
         </div>
       </div>
 
@@ -369,53 +404,68 @@
     <!-- Conditional Logic -->
     <section class="rules-section">
       <h2>Conditional Logic Quick Reference</h2>
+      <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:var(--radius);padding:.8rem 1rem;margin-bottom:1rem;font-size:.82rem;color:#78350f;">
+        <strong>LSAT Demon's take:</strong> The word "contrapositive" never appears on the LSAT. These relationships are just commonsense rephrasing — understand them in plain English. "If it's brick, it can be earthquake-damaged" simply means "if it can't be earthquake-damaged, it isn't brick." No arrow diagrams required.
+      </div>
       <table class="rules-table">
         <thead>
-          <tr><th>Form</th><th>Read As</th><th>Contrapositive</th></tr>
+          <tr><th>Form</th><th>Plain English</th><th>Valid Flip (Contrapositive)</th></tr>
         </thead>
         <tbody>
           <tr>
             <td><code>If A → B</code></td>
             <td>All A are B / Whenever A, then B</td>
-            <td><code>If ¬B → ¬A</code></td>
+            <td>If not-B, then not-A</td>
           </tr>
           <tr>
             <td><code>A only if B</code></td>
-            <td><code>If A → B</code></td>
-            <td><code>If ¬B → ¬A</code></td>
+            <td>You can't have A without B</td>
+            <td>If not-B, then not-A</td>
           </tr>
           <tr>
             <td><code>All A are B</code></td>
-            <td><code>If A → B</code></td>
-            <td><code>If ¬B → ¬A</code></td>
+            <td>Every single A is also B</td>
+            <td>If not-B, then not-A</td>
           </tr>
           <tr>
             <td><code>No A are B</code></td>
-            <td><code>If A → ¬B</code></td>
-            <td><code>If B → ¬A</code></td>
+            <td>A and B are mutually exclusive</td>
+            <td>If B, then not-A</td>
           </tr>
           <tr>
             <td><code>Unless B, not A</code></td>
-            <td><code>If A → B</code></td>
-            <td><code>If ¬B → ¬A</code></td>
+            <td>B is required for A to happen</td>
+            <td>If not-B, then not-A</td>
           </tr>
           <tr>
             <td><code>A unless B</code></td>
-            <td><code>If ¬B → A</code></td>
-            <td><code>If ¬A → B</code></td>
+            <td>If B doesn't happen, A will</td>
+            <td>If not-A, then B</td>
           </tr>
         </tbody>
       </table>
-      <p style="font-size:.82rem;color:var(--text-muted);margin-top:.75rem;"><strong>Invalid inferences:</strong> Affirming the consequent (If A→B; B; therefore A — WRONG) and Denying the antecedent (If A→B; ¬A; therefore ¬B — WRONG).</p>
+      <p style="font-size:.82rem;color:var(--text-muted);margin-top:.75rem;"><strong>Invalid moves:</strong> Affirming the consequent (A→B; B; ∴ A — WRONG) and Denying the antecedent (A→B; not-A; ∴ not-B — WRONG). The LSAT loves to bait you into these.</p>
+    </section>
+
+    <!-- LSAT Demon Resource Callout -->
+    <section style="background:#0a0a0a;border-radius:var(--radius);padding:1.25rem 1.4rem;margin-bottom:2rem;color:#fff;">
+      <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.5rem;">Recommended · Free Resource</div>
+      <h3 style="margin:0 0 .5rem;font-size:1rem;">LSAT Demon — Free Classes &amp; Podcast</h3>
+      <p style="font-size:.85rem;color:rgba(255,255,255,.75);margin-bottom:.75rem;">Nathan Fox and Ben Olson publish 1,700+ free video walkthroughs on YouTube (@LSATDemon) where they solve real LSAT questions <em>cold</em> — without knowing the answers in advance — modeling the exact thought process you need to develop. Their <em>LSAT Demon Daily</em> podcast covers LR, RC, and test strategy daily.</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <span style="background:rgba(255,255,255,.12);border-radius:100px;padding:.3rem .8rem;font-size:.78rem;font-weight:600;">YouTube: @LSATDemon</span>
+        <span style="background:rgba(255,255,255,.12);border-radius:100px;padding:.3rem .8rem;font-size:.78rem;font-weight:600;">Podcast: LSAT Demon Daily</span>
+        <span style="background:rgba(255,255,255,.12);border-radius:100px;padding:.3rem .8rem;font-size:.78rem;font-weight:600;">Book: The LSAT Is Easy (2025)</span>
+      </div>
     </section>
 
     <div style="text-align:center;margin-top:2rem;">
-      <a href="practice.html?type=lr" class="action-btn lr-btn">Practice LR Questions →</a>
+      <a href="practice.html?type=lr" class="action-btn lr-btn">Train LR Now →</a>
     </div>
   </main>
 
   <footer class="footer">
-    <p>LSAT Study Hub — Built for Eddie's Prep</p>
+    <p>EddieHub 💪 — Built for Eddie's Prep</p>
   </footer>
 
   <script src="js/main.js"></script>

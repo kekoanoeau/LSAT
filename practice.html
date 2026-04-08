@@ -3,89 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Practice — LSAT Study Hub</title>
+  <title>Train — EddieHub 💪</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-brand">
-      <span class="brand-icon">⚖</span>
-      <span>LSAT Study Hub</span>
+      <span class="brand-icon">🏋️</span>
+      <span>EddieHub 💪</span>
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Dashboard</a></li>
       <li><a href="logical-reasoning.html">Logical Reasoning</a></li>
       <li><a href="logic-games.html">Logic Games</a></li>
       <li><a href="reading-comp.html">Reading Comp</a></li>
-      <li><a href="practice.html" class="active">Practice</a></li>
-      <li><a href="progress.html">Progress</a></li>
+      <li><a href="practice.html" class="active">Train</a></li>
+      <li><a href="progress.html">Gains</a></li>
     </ul>
   </nav>
 
   <!-- Selection Screen -->
   <div id="selectionScreen" class="selection-screen" style="display:none;">
-    <h1>Practice Mode</h1>
-    <p>Select a section and question count to begin. Your results are saved automatically.</p>
+    <h1>Training Session 🏋️</h1>
+    <p>Pick your workout. Load the bar, set the clock, get after it. Results are saved automatically.</p>
 
-    <h3 style="font-size:.9rem;font-weight:700;margin-bottom:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;">Section</h3>
+    <h3 style="font-size:.9rem;font-weight:700;margin-bottom:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;">Exercise</h3>
     <div class="option-grid" id="sectionOptions">
       <div class="option-card" data-value="lr" onclick="selectOption('section', this)">
-        <div class="opt-icon">📖</div>
+        <div class="opt-icon">🧠</div>
         <h3>Logical Reasoning</h3>
-        <p>Argument analysis questions</p>
+        <p>The main lift — argument analysis</p>
       </div>
       <div class="option-card" data-value="lg" onclick="selectOption('section', this)">
-        <div class="opt-icon">🔢</div>
+        <div class="opt-icon">📦</div>
         <h3>Logic Games</h3>
-        <p>Sequencing & grouping puzzles</p>
+        <p>Archived — removed Aug 2024</p>
       </div>
       <div class="option-card" data-value="rc" onclick="selectOption('section', this)">
-        <div class="opt-icon">📄</div>
+        <div class="opt-icon">📚</div>
         <h3>Reading Comp</h3>
-        <p>Passage-based questions</p>
+        <p>Accessory work — passage sets</p>
       </div>
       <div class="option-card" data-value="mixed" onclick="selectOption('section', this)">
         <div class="opt-icon">⚡</div>
-        <h3>Mixed Drill</h3>
-        <p>All section types</p>
+        <h3>Cross-Train</h3>
+        <p>Mixed everything — full body</p>
       </div>
     </div>
 
-    <h3 style="font-size:.9rem;font-weight:700;margin:.75rem 0;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;">Question Count</h3>
+    <h3 style="font-size:.9rem;font-weight:700;margin:.75rem 0;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;">Set Size</h3>
     <div class="option-grid" id="countOptions">
       <div class="option-card" data-value="5" onclick="selectOption('count', this)">
         <div class="opt-icon">🔹</div>
-        <h3>5 Questions</h3>
-        <p>~7 minutes</p>
+        <h3>5 Reps</h3>
+        <p>~7 minutes · warm-up</p>
       </div>
       <div class="option-card" data-value="10" onclick="selectOption('count', this)">
         <div class="opt-icon">🔸</div>
-        <h3>10 Questions</h3>
-        <p>~15 minutes</p>
+        <h3>10 Reps</h3>
+        <p>~15 minutes · working set</p>
       </div>
       <div class="option-card" data-value="all" onclick="selectOption('count', this)">
-        <div class="opt-icon">🔴</div>
-        <h3>All Available</h3>
-        <p>Full drill</p>
+        <div class="opt-icon">🔥</div>
+        <h3>Max Out</h3>
+        <p>All available · go until failure</p>
       </div>
     </div>
 
-    <h3 style="font-size:.9rem;font-weight:700;margin:.75rem 0;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;">Timer</h3>
+    <h3 style="font-size:.9rem;font-weight:700;margin:.75rem 0;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em;">Intensity</h3>
     <div class="option-grid" id="timerOptions">
       <div class="option-card" data-value="timed" onclick="selectOption('timer', this)">
         <div class="opt-icon">⏱</div>
-        <h3>Timed</h3>
+        <h3>Race the Clock</h3>
         <p>Per-question countdown</p>
       </div>
       <div class="option-card" data-value="untimed" onclick="selectOption('timer', this)">
-        <div class="opt-icon">♾</div>
-        <h3>Untimed</h3>
-        <p>No time pressure</p>
+        <div class="opt-icon">🧘</div>
+        <h3>No Clock</h3>
+        <p>Form over speed — build technique</p>
       </div>
     </div>
 
     <button class="btn btn-primary" id="startBtn" onclick="startPractice()" style="margin-top:1.5rem;padding:.75rem 2rem;font-size:1rem;" disabled>
-      Start Practice →
+      Hit the Mats →
     </button>
   </div>
 
@@ -93,7 +93,7 @@
   <div id="practiceScreen" class="practice-container" style="display:none;">
     <div class="practice-header">
       <div>
-        <div class="practice-title" id="practiceTitle">Practice</div>
+        <div class="practice-title" id="practiceTitle">Training</div>
         <div style="font-size:.82rem;color:var(--text-muted)" id="practiceSubtitle"></div>
       </div>
       <div id="timerContainer" style="display:none;">
@@ -111,36 +111,36 @@
     <div id="questionArea"></div>
 
     <div class="practice-controls">
-      <button class="btn btn-secondary" id="prevBtn" onclick="navigateQuestion(-1)" disabled>← Previous</button>
+      <button class="btn btn-secondary" id="prevBtn" onclick="navigateQuestion(-1)" disabled>← Back</button>
       <div style="display:flex;gap:.75rem;">
-        <button class="btn btn-secondary" id="skipBtn" onclick="skipQuestion()">Skip</button>
-        <button class="btn btn-primary" id="submitBtn" onclick="submitAnswer()" disabled>Submit Answer</button>
+        <button class="btn btn-secondary" id="skipBtn" onclick="skipQuestion()">Skip Rep</button>
+        <button class="btn btn-primary" id="submitBtn" onclick="submitAnswer()" disabled>Lock It In</button>
       </div>
-      <button class="btn btn-primary" id="nextBtn" onclick="navigateQuestion(1)" style="display:none;">Next →</button>
+      <button class="btn btn-primary" id="nextBtn" onclick="navigateQuestion(1)" style="display:none;">Next Rep →</button>
     </div>
   </div>
 
   <!-- Results Screen -->
   <div id="resultsScreen" style="display:none;" class="practice-container">
     <div class="results-card">
-      <div style="font-size:3rem;margin-bottom:.5rem;" id="resultsEmoji">🎯</div>
+      <div style="font-size:3rem;margin-bottom:.5rem;" id="resultsEmoji">💪</div>
       <div class="results-score" id="resultsScore">—</div>
-      <div class="results-label" id="resultsLabel">Correct</div>
+      <div class="results-label" id="resultsLabel">Session Complete</div>
 
       <div class="results-breakdown" id="resultsBreakdown"></div>
 
       <div id="resultsByType" style="margin-bottom:1.5rem;text-align:left;max-width:400px;margin-left:auto;margin-right:auto;"></div>
 
       <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <button class="btn btn-primary" onclick="restartPractice()">Practice Again</button>
-        <a href="progress.html" class="btn btn-secondary">View Progress</a>
+        <button class="btn btn-primary" onclick="restartPractice()">Another Set 🔁</button>
+        <a href="progress.html" class="btn btn-secondary">Check Gains</a>
         <a href="index.html" class="btn btn-secondary">Dashboard</a>
       </div>
     </div>
   </div>
 
   <footer class="footer">
-    <p>LSAT Study Hub — Built for Eddie's Prep</p>
+    <p>EddieHub 💪 — Train Hard, Test Harder</p>
   </footer>
 
   <script src="data/questions.js"></script>

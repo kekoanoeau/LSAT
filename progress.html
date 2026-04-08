@@ -3,36 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Progress — LSAT Study Hub</title>
+  <title>Gains — EddieHub 💪</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <nav class="navbar">
     <div class="nav-brand">
-      <span class="brand-icon">⚖</span>
-      <span>LSAT Study Hub</span>
+      <span class="brand-icon">🏋️</span>
+      <span>EddieHub 💪</span>
     </div>
     <ul class="nav-links">
       <li><a href="index.html">Dashboard</a></li>
       <li><a href="logical-reasoning.html">Logical Reasoning</a></li>
       <li><a href="logic-games.html">Logic Games</a></li>
       <li><a href="reading-comp.html">Reading Comp</a></li>
-      <li><a href="practice.html">Practice</a></li>
-      <li><a href="progress.html" class="active">Progress</a></li>
+      <li><a href="practice.html">Train</a></li>
+      <li><a href="progress.html" class="active">Gains</a></li>
     </ul>
   </nav>
 
   <main class="progress-content">
-    <h1 class="page-title">Your Progress</h1>
-    <p class="page-subtitle">Track your performance across all sections and identify areas to improve.</p>
+    <h1 class="page-title">Your Gains 📈</h1>
+    <p class="page-subtitle">Track your progress, see where you're strong, and crush your weak points. Every rep counts.</p>
 
     <!-- Overview Stats -->
     <div class="stats-row" style="margin-bottom:1.5rem;grid-template-columns:repeat(3,1fr);">
       <div class="stat-card">
-        <div class="stat-icon total-color">∑</div>
+        <div class="stat-icon total-color">💪</div>
         <div>
           <div class="stat-number" id="totalDone">0</div>
-          <div class="stat-label">Questions Attempted</div>
+          <div class="stat-label">Total Reps</div>
         </div>
       </div>
       <div class="stat-card">
@@ -55,46 +55,46 @@
     <div class="chart-card">
       <h3>Accuracy by Section</h3>
       <div class="bar-chart" id="accuracyChart">
-        <div style="color:var(--text-muted);font-size:.875rem;">Complete some practice sessions to see your accuracy here.</div>
+        <div style="color:var(--text-muted);font-size:.875rem;">Log some training sessions to see your accuracy here.</div>
       </div>
     </div>
 
     <!-- Score Estimator -->
     <div class="chart-card">
-      <h3>Estimated LSAT Score Range</h3>
+      <h3>Projected LSAT Score</h3>
       <div id="scoreEstimate" style="text-align:center;padding:1rem 0;">
-        <div style="font-size:.875rem;color:var(--text-muted);">Complete practice in all three sections to see a score estimate.</div>
+        <div style="font-size:.875rem;color:var(--text-muted);">Complete LR and RC training to see your projected score.</div>
       </div>
       <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem;">
-        Note: This estimate is based on your practice accuracy only. Official PrepTests under timed conditions are the best predictor of your actual score.
+        Note: Projection based on practice accuracy only. Official PrepTests under timed conditions are the true measure of test-day performance.
       </p>
     </div>
 
     <!-- Per-type accuracy -->
     <div class="chart-card">
-      <h3>Accuracy by Question Type</h3>
+      <h3>Strength by Question Type</h3>
       <div id="typeAccuracyChart">
-        <div style="color:var(--text-muted);font-size:.875rem;">Answer some practice questions to see per-type accuracy here.</div>
+        <div style="color:var(--text-muted);font-size:.875rem;">Complete some training to see your strength breakdown by question type.</div>
       </div>
     </div>
 
     <!-- Session History -->
     <div class="chart-card">
-      <h3>Recent Sessions</h3>
+      <h3>Training Log</h3>
       <div id="historyContainer">
-        <div style="color:var(--text-muted);font-size:.875rem;">No sessions recorded yet. Start a practice session to track your progress!</div>
+        <div style="color:var(--text-muted);font-size:.875rem;">No sessions logged yet. Hit the gym — your training history will appear here.</div>
       </div>
 
       <button class="btn btn-secondary" onclick="clearHistory()" style="margin-top:1rem;font-size:.8rem;" id="clearBtn" style="display:none;">
-        Clear History
+        Clear Log
       </button>
     </div>
 
     <!-- Study Tips Based on Performance -->
     <div class="chart-card" id="tipsCard">
-      <h3>Personalized Study Tips</h3>
+      <h3>Coach's Corner 🎯</h3>
       <div id="tipsContent">
-        <p style="font-size:.875rem;color:var(--text-muted);">Complete some practice to get personalized recommendations.</p>
+        <p style="font-size:.875rem;color:var(--text-muted);">Log some training sessions to get personalized coaching recommendations.</p>
       </div>
     </div>
 
@@ -108,7 +108,7 @@
             style="padding:.5rem .75rem;border:1px solid var(--border);border-radius:8px;font-size:1rem;width:100px;"
           />
         </div>
-        <button class="btn btn-primary" onclick="saveTarget()" style="margin-top:1.25rem;">Save Target</button>
+        <button class="btn btn-primary" onclick="saveTarget()" style="margin-top:1.25rem;">Lock It In</button>
         <div id="targetSaved" style="font-size:.85rem;color:var(--lg);display:none;margin-top:1.25rem;">✓ Saved!</div>
       </div>
       <div id="targetContext" style="margin-top:1rem;font-size:.85rem;color:var(--text-muted);"></div>
@@ -116,7 +116,7 @@
   </main>
 
   <footer class="footer">
-    <p>LSAT Study Hub — Built for Eddie's Prep</p>
+    <p>EddieHub 💪 — Train Hard, Test Harder</p>
   </footer>
 
   <script src="js/main.js"></script>

@@ -1,5 +1,5 @@
 // =============================================
-// LSAT Study Hub — Progress Page
+// EddieHub 💪 — Progress Page
 // =============================================
 
 const SECTION_LABELS = { lr: 'Logical Reasoning', lg: 'Logic Games', rc: 'Reading Comp', mixed: 'Mixed' };
@@ -152,13 +152,13 @@ function renderTips(acc) {
     if (!acc[s] || acc[s].total === 0) return;
     const pct = (acc[s].correct / acc[s].total) * 100;
     if (pct < 60) {
-      tips.push({ section: s, level: 'critical', tip: `Your ${SECTION_LABELS[s]} accuracy is ${Math.round(pct)}%. Focus on foundational concepts — review the study guide and work untimed drills until you reach 70%.` });
+      tips.push({ section: s, level: 'critical', tip: `${SECTION_LABELS[s]} is at ${Math.round(pct)}% — we need to go back to basics. Drop the ego, slow down, and drill untimed fundamentals until you're consistently hitting 70%+. No shame in deloading; it's how you build back stronger.` });
     } else if (pct < 75) {
-      tips.push({ section: s, level: 'improve', tip: `Your ${SECTION_LABELS[s]} accuracy is ${Math.round(pct)}%. You're building a foundation. Focus on understanding WHY wrong answers are wrong on every missed question.` });
+      tips.push({ section: s, level: 'improve', tip: `${SECTION_LABELS[s]} at ${Math.round(pct)}% — you're in the building phase. This is where most people plateau. Don't skip the debrief: on every missed question, understand exactly WHY each wrong answer is wrong. That's your progressive overload.` });
     } else if (pct < 88) {
-      tips.push({ section: s, level: 'good', tip: `${SECTION_LABELS[s]} at ${Math.round(pct)}% — solid progress. Now work on speed without sacrificing accuracy. Time yourself per-question.` });
+      tips.push({ section: s, level: 'good', tip: `${SECTION_LABELS[s]} at ${Math.round(pct)}% — solid work. Now it's time to add the clock. Same reps, less rest — time yourself per-question and refuse to let speed break your form.` });
     } else {
-      tips.push({ section: s, level: 'excellent', tip: `${SECTION_LABELS[s]} at ${Math.round(pct)}% — excellent! Maintain this under timed conditions. Focus your remaining energy on weaker sections.` });
+      tips.push({ section: s, level: 'excellent', tip: `${SECTION_LABELS[s]} at ${Math.round(pct)}% — this is elite-level performance. Maintain it under timed, test-day conditions. Shift energy to your weaker sections; your LR/RC engine is already built.` });
     }
   });
 
@@ -168,7 +168,7 @@ function renderTips(acc) {
   }
 
   const levelColors = { critical: '#ef4444', improve: 'var(--rc)', good: 'var(--lr)', excellent: 'var(--lg)' };
-  const levelLabels = { critical: 'Needs Work', improve: 'Improving', good: 'Good', excellent: 'Strong' };
+  const levelLabels = { critical: 'Deload Zone', improve: 'Building', good: 'Progressing', excellent: 'PR Territory' };
 
   content.innerHTML = tips.map(t => `
     <div style="display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.75rem;padding:.75rem;background:#f8fafc;border-radius:8px;border-left:3px solid ${levelColors[t.level]}">

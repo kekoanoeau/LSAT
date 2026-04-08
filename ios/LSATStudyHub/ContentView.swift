@@ -4,16 +4,16 @@ struct ContentView: View {
     var body: some View {
         TabView {
             DashboardView()
-                .tabItem { Label("Dashboard", systemImage: "house.fill") }
+                .tabItem { Label("Home", systemImage: "house.fill") }
 
             StudyGuideView()
-                .tabItem { Label("Study", systemImage: "book.fill") }
+                .tabItem { Label("Workout", systemImage: "book.fill") }
 
             PracticeView()
-                .tabItem { Label("Practice", systemImage: "pencil.circle.fill") }
+                .tabItem { Label("Train", systemImage: "dumbbell.fill") }
 
             ProgressDashboardView()
-                .tabItem { Label("Progress", systemImage: "chart.bar.fill") }
+                .tabItem { Label("Gains", systemImage: "chart.bar.fill") }
         }
         .tint(.primary)
     }
