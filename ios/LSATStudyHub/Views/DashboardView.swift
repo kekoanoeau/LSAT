@@ -165,7 +165,8 @@ struct DashboardView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("Approved Resources").font(.headline)
             VStack(spacing: 8) {
-                ResourceRow(name: "LSAC LawHub", detail: "Official PrepTests — the barbells of LSAT prep. No substitute.", badge: "Official", badgeColor: .orange)
+                ResourceRow(name: "LSAT Demon 🔥", detail: "Nathan Fox (179/180) & Ben Olson. 1,700+ free YouTube videos, daily podcast. \"Slow down to speed up.\" No gimmicks — just real understanding.", badge: "EddieHub Pick", badgeColor: .black)
+                ResourceRow(name: "LSAC LawHub", detail: "Official PrepTests — the barbells of LSAT prep. The only source of real LSAT questions. No substitute.", badge: "Official", badgeColor: .orange)
                 ResourceRow(name: "The LSAT Trainer", detail: "Mike Kim's book. Best third-party coaching resource.", badge: "Top Pick", badgeColor: .indigo)
                 ResourceRow(name: "PowerScore Bibles", detail: "LR, LG, RC Bibles for athletes who want full theoretical depth.", badge: "Recommended", badgeColor: .indigo)
                 ResourceRow(name: "7Sage LSAT", detail: "Best video coaching for every PrepTest question.", badge: "Recommended", badgeColor: .indigo)
